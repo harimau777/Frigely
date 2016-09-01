@@ -1,5 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var routes = require('./routes.js');
+
 
 var app = express();
 
@@ -8,9 +10,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+// implement routes
+routes(app, express); // this should run the routes
+
+// serve static assets
+app.use(express.static(__dirname + '/../client'));
+
+
 /**
 simulate database
-**/
+
 var items = [];
 
 var addItem = function(item) {
@@ -30,29 +40,12 @@ var addItems = function(food) {
 };
 
 addItems(['carrots', 'potatoes', 'rice']);
+**/
 
-
-// api/ingredients endpoint
-app.get('/api/ingredients', function (req, res) {
-  res.send(items);
-});
-
-app.post('/add/:item', function (req, res) {
-  console.log('req', JSON.stringify(req.body));
-  addItem(req.params.item);
-  res.send(JSON.stringify(req.body));
-});
-
-// calls api to get recipes
-app.post('/api/recipes', function (req, res) {
-  // prepare req.body for api
-  res.send('api called with ingredients');
-});
-
-app.get('/', function (req, res) {
-  res.send('Home Page');
-});
 
 app.listen(8080, function () {
   console.log('App listening on port 8080!');
 });
+
+// added in an exports.module line here
+module.exports = app; // exporting app into routes
