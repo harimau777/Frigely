@@ -1,0 +1,4 @@
+**/node_modules
+*.min.js
+client/js/materialize.js
+client/lib/*
