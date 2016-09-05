@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 var app = express();
 
@@ -8,6 +9,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(morgan('dev'));
+
 /**
 simulate database
 **/
@@ -45,8 +49,10 @@ app.post('/add/:item', function (req, res) {
 
 // calls api to get recipes
 app.post('/api/recipes', function (req, res) {
+  console.log(req.body.ingredients);
   // prepare req.body for api
-  res.send('api called with ingredients');
+  // res.send('api called with ingredients:', req.body.ingredients);
+  res.send('api called with ingredients:', req.body);
 });
 
 app.get('/', function (req, res) {
