@@ -9,6 +9,20 @@ module.exports = function(grunt) {
         },
         src: ['test/**/*.js']
       }
+    },
+
+    nodemon: {
+      dev: {
+        script: 'server/server.js'
+      }
+    },
+
+    eslint: {
+      target: [
+        [
+          'client/js/**/*.js'
+        ]
+      ]
     }
   });
 
@@ -17,6 +31,12 @@ module.exports = function(grunt) {
   ////////////////////////////////////
 
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-eslint');
+
+  grunt.registerTask('start', [
+    'nodemon'
+  ]);
 
   grunt.registerTask('test', [
     'mochaTest'
