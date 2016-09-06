@@ -13,6 +13,7 @@ app.use('/', express.static('client'));
 
 // api/ingredients endpoint
 app.get('/api/ingredients', function (req, res) {
+  // What are items here? This variable isn't defined... 
   res.send(items);
 });
 
