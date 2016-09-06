@@ -25,7 +25,7 @@ req.body has a property with an array of ingredients:
 {
   "ingredients": [ "hotdogs", "flour", "milk" ]
 }
-g
+
 */
 app.post('/api/recipes', function (req, res) {
   var ingredientsStr = req.body.ingredients.join('%2c+');
