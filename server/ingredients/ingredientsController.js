@@ -18,9 +18,10 @@ module.exports = {
 
 		// var items = req.body.ingredients;
 
+		// API KEY NEEDS TO BE ADDED INTO THE CONFIG FILE
 		//These code snippets use an open-source library. http://unirest.io/nodejs
 		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1")
-		.header("X-Mashape-Key", "MpWhczL7XsmshSZggYDi3bpSPYyVp1xM1eOjsnRPDTQpwJBtxB")
+		.header("X-Mashape-Key", "API_KEY")
 		.header("Accept", "application/json")
 		.end(function (result) {
 		  console.log(result.status, result.headers, result.body);

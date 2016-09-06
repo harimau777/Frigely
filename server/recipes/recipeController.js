@@ -15,9 +15,10 @@ module.exports = {
 		// we will need to switch out the number part of the below string with recipeId 
 		// to make it dynamic
 
+		// Refer to slack channel for API key
 		console.log('entered into the getREcipe for controller');
 		unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/324694/analyzedInstructions?stepBreakdown=true")
-			.header("X-Mashape-Key", "MpWhczL7XsmshSZggYDi3bpSPYyVp1xM1eOjsnRPDTQpwJBtxB")
+			.header("X-Mashape-Key", "API_KEY")
 			.header("Accept", "application/json")
 			.end(function (result) {
   		console.log(result.status, result.headers, result.body);
