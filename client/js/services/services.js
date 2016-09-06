@@ -12,7 +12,7 @@ angular.module('fridgely.services', [])
       return $http({
         method: 'POST',
         url: '/api/recipes',
-        data: ingredients
+        data: ingredients 
       }).then(function(res) {
         return res.data;
       });
