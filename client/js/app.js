@@ -24,5 +24,4 @@ angular.module('fridgely', [
       .otherwise({
         redirectTo: '/landing'
       });
-
   });

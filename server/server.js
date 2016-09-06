@@ -1,7 +1,4 @@
 var express = require('express');
-// var request = require('request');
-// var config = require('./env/config');
-
 var app = express();
 
 // middleware
