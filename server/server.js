@@ -9,6 +9,7 @@ var app = express();
 // middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use('/', express.static('../client'));
 
 // api/ingredients endpoint
 app.get('/api/ingredients', function (req, res) {
