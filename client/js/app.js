@@ -22,8 +22,7 @@ angular.module('fridgely', [
         controller: 'SearchController'
       })
       .otherwise({
-        redirectTo: 'js/landing/landing.html',
-        controller: 'LandingPageController'
+        redirectTo: '/landing'
       });
 
   });
