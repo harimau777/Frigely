@@ -4,8 +4,8 @@ angular.module('fridgely', [
   'fridgely.recipes',
   'fridgely.landing',
   'fridegly.search',
-  'ngRoute'
-  ])
+  'ngRoute']
+  )
 
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
@@ -22,7 +22,8 @@ angular.module('fridgely', [
         controller: 'SearchController'
       })
       .otherwise({
-        redirectTo: '/landing'
+        redirectTo: 'js/landing/landing.html',
+        controller: 'LandingPageController'
       });
 
   });
