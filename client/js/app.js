@@ -4,8 +4,8 @@ angular.module('fridgely', [
   'fridgely.recipes',
   'fridgely.landing',
   'fridegly.search',
-  'ngRoute'
-  ])
+  'ngRoute']
+  )
 
   .config(function($routeProvider, $httpProvider) {
     $routeProvider

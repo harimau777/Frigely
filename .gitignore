@@ -29,6 +29,8 @@ dist/
 node_modules/
 bower_components/
 client/lib
+server/env/config.js
+
 
 # Floobits
 .floo
