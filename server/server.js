@@ -9,10 +9,11 @@ var app = express();
 // middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use('/', express.static('../client'));
+app.use('/', express.static('client'));
 
 // api/ingredients endpoint
 app.get('/api/ingredients', function (req, res) {
+  // What are items here? This variable isn't defined... 
   res.send(items);
 });
 
@@ -32,16 +33,16 @@ app.post('/api/recipes', function (req, res) {
     headers: {
       'X-Mashape-Key': config.api_key
     },
-    url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + ingredientsStr+ "&limitLicense=false&number=5&ranking=1" }, 
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' +
+      'findByIngredients?fillIngredients=false&ingredients=' +
+      ingredientsStr +
+      '&limitLicense=false&number=5&ranking=1' }, 
     function(error, response, body) { 
-    if (!error && response.statusCode == 200) { 
-      res.send(body); 
-    } 
-  }); 
-});
-
-app.get('/', function (req, res) {
-  res.send('Home Page');
+      if (!error && response.statusCode === 200) { 
+        res.send(body); 
+      } 
+    }
+  ); 
 });
 
 app.listen(8080, function () {
