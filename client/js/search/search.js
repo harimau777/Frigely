@@ -2,7 +2,6 @@
 angular.module('fridegly.search', [])
   .controller('SearchController', function($scope, Search) {
     $scope.data = {};
-
     $scope.data.ingredients = [];
 
     /**
@@ -13,6 +12,7 @@ angular.module('fridegly.search', [])
     $scope.addIngredient = function () {
       $scope.data.ingredients.push($scope.ingredient);
       $scope.ingredient = '';
+      $scope.message = '';
     };
 
     /**
@@ -32,7 +32,11 @@ angular.module('fridegly.search', [])
      * @returns undefined
      */
     $scope.sendIngredients = function () {
-      Search.sendIngredients($scope.data);
+      if ($scope.data.ingredients.length === 0) {
+        $scope.message = 'Please add one or more ingredients.';
+      } else {
+        Search.sendIngredients($scope.data);
+      }
     };
 
   });
