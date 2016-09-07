@@ -5,16 +5,12 @@ angular.module('fridegly.search', [])
 
     $scope.data.ingredients = [];
 
-    $scope.storeIngredients = function () {
-      Search.ingredients = $scope.data.ingredients;
+    $scope.addIngredient = function () {
+      $scope.data.ingredients.push($scope.ingredient);
+      $scope.ingredient = '';
     };
 
   });
-
-
-
-
-
 
 
 //This may be used in the future to autocomplete ingredient words,  can be drawn from a database full of the ingredient list
