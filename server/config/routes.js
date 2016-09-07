@@ -1,37 +1,16 @@
-var config = require('../env/config');
-var request = require('request');
+var ingredientsController = require('../ingredients/ingredientsController.js');
+// maybe recipes controller too
 
 module.exports = function(app) {
-  /*
-  Calls spoonacular api to get recipes.
+  console.log('into routes');
 
-  req.body has a property with an array of ingredients:
+  /**
+    * @name /api/recipes 
+    * @desc routes to /api/recipes, and calls .getRecipesForIngredients handler
+    * @param {req, res} the request and response for calls
+    * @returns {nothing}
+    */
+  app.post('/api/recipes', ingredientsController.getRecipesForIngredients);
 
-  {
-    'ingredients': [ 'hotdogs', 'flour', 'milk' ]
-  }
-
-  */
-
-  app.post('/api/recipes', function (req, res) {
-    if (req.body.ingredients) {
-      var ingredientsStr = req.body.ingredients.join('%2c+');
-      request.get({
-        headers: {
-          'X-Mashape-Key': config.api_key
-        },
-        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/' +
-          'recipes/findByIngredients?fillIngredients=false&ingredients=' +
-          ingredientsStr +
-          '&limitLicense=false&number=5&ranking=1' }, 
-        function(error, response, body) { 
-          if (!error && response.statusCode === 200) { 
-            res.send(body); 
-          } 
-      }); 
-    } else {
-      res.status(400).send('No ingredients found');
-    }
-  });
 
 };
