@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="input-field col s6 offset-s3">
-      <form>
+      <form ng-submit="addIngredient()">
 	<input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete" pattern="^\s*[A-Za-z]+\s*"/>
 	<label for="autocomplete-input">Enter Ingredient</label>
       </form>
