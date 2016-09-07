@@ -1,6 +1,7 @@
 <!-- Since we're not certain on the response of the server, this is hard to fill out -->
 <div id="container" class="collection" ng-controller="RecipeController">
-  <a href="#!" class="collection-item" ng-repeat="recipe in data.recipes">
-    {{recipe}}
+  <a href="#!" class="collection-item row" ng-repeat="recipe in data.recipes">
+    <p class='foodTitle col s3'>{{recipe.title}}</p>
+    <img class='foodPic' ng-src={{recipe.image}} />
   </a>
 </div>

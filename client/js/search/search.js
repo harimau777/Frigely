@@ -32,7 +32,7 @@ angular.module('fridegly.search', [])
      * @returns undefined
      */
     $scope.sendIngredients = function () {
-      Search.sendIngredients($scope.data.ingredients);
+      Search.sendIngredients($scope.data);
     };
 
   });
