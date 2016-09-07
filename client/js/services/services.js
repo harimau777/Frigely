@@ -1,5 +1,5 @@
 angular.module('fridgely.services', [])
-  .factory('Search', function($http) {
+  .factory('Search', function($http, $location) {
     var recipes = [];
 
     /**
@@ -17,6 +17,7 @@ angular.module('fridgely.services', [])
       }).then(function(res) {
         console.log(res);
         recipes = res.data;
+        $location.path('/recipes');
         return res.data;
       });
     };
