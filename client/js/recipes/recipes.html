@@ -1,5 +1,10 @@
 <!-- Since we're not certain on the response of the server, this is hard to fill out -->
 <div id="container" class="collection" ng-controller="RecipeController">
+  <h3>Recipes:</h3>
+  <div ng-show="showSearch" >
+      <p>You currently do not have any recipes. Go to the
+        <a href='#/search'>Get Ingredients</a> page to start searching!</p>
+  </div>
   <a href="#!" class="collection-item row" ng-repeat="recipe in data.recipes">
     <p class='foodTitle col s3'>{{recipe.title}}</p>
     <img class='foodPic' ng-src={{recipe.image}} />

@@ -20,4 +20,5 @@ angular.module('fridgely.recipes', [])
     };
 
     $scope.getIngredients();
+    $scope.showSearch = $scope.data.recipes.length === 0;
   });
