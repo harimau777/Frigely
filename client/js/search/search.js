@@ -10,7 +10,12 @@ angular.module('fridegly.search', [])
      * @returns undefined
      */
     $scope.addIngredient = function () {
-      $scope.data.ingredients.push($scope.ingredient);
+      // Scrub the input string so that it looks standardized. For exmaple, strings such as
+      //   'chICKEN        FinGers' -> 'Chicken Fingers'. 
+      var name = $scope.ingredient.trim().split(/\s+/).map(function(item) {
+        return item[0].toUpperCase() + item.substr(1).toLowerCase();
+      }).join(' ');
+      $scope.data.ingredients.indexOf(name) === -1 && $scope.data.ingredients.push(name);
       $scope.ingredient = '';
       $scope.message = '';
     };
