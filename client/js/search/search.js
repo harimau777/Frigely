@@ -5,8 +5,8 @@ angular.module('fridegly.search', [])
 
     $scope.data.ingredients = [];
 
-    $scope.storeIngredients = function () {
-      Search.ingredients = $scope.data.ingredients;
+    $scope.addIngredient = function () {
+      $scope.data.ingredients.push($scope.ingredient);
     };
 
   });
