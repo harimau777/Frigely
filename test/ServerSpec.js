@@ -35,6 +35,30 @@ describe('', function() {
         });
     });
   });
+
+  describe('Tests behind Existing Search Service', function() {
+
+    it('Should be able to successfully receive ingredients', function() {
+      request
+        .post('http://127.0.0.1:8000/api/recipes')
+        .set('data',{"ingredients" : ["chicken", "orange"]})
+        .on('response', (res) => {
+          // need to fill in this part
+          expect(data.length).to.equal(5);
+          done();
+      });
+    });
+
+     // we can try to write tests for the search page
+    it('Should receive a 200 status statusCode when successfully adding ingredients', function(done) {
+      request
+        .post('http://127.0.0.1:8000/api/recipes')
+        .on('response', (res) => {
+          expect(res.statusCode).to.equal(200);
+          done();
+      });
+    });
+  });
 });
 
 // Should be able to search recipies on the server. 
