@@ -1,6 +1,6 @@
 var unirest = require('unirest');
-// var request = require('request');
-// may use request later...
+var config = require('../env/config.js');
+var request = require('request');
 
 module.exports = {
 
@@ -28,6 +28,35 @@ module.exports = {
 		});
 
 		// not that for each splace, there is a '%2C'
+	},
 
+	/**
+    * @name getRecipesForIngredients
+    * @desc Sends a get-request to spoonacular findByIngredients API call
+    * @param {req, res} the request and response for calls
+    * @returns {obj} General Recipe info per string of ingredients
+    */
+
+	getRecipesForIngredients : (req, res) => {
+		if (req.body.ingredients) {
+      var ingredientsStr = req.body.ingredients.join('%2c+');
+      request.get({
+        headers: {
+          'X-Mashape-Key': config.api_key
+        },
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/' +
+          'recipes/findByIngredients?fillIngredients=false&ingredients=' +
+          ingredientsStr +
+          '&limitLicense=false&number=5&ranking=1' }, 
+        function(error, response, body) { 
+          if (!error && response.statusCode === 200) { 
+            res.send(body); 
+          } 
+      }); 
+    	} else {
+      	res.status(400).send('No ingredients found');
+    	}
 	}
+
+
 }
