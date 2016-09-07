@@ -21,3 +21,32 @@
 .foodTitle {
   font-size: 16px;
 }
+
+
+h1.headerText { 
+	font-size: 2.8em;
+}
+
+h1.headerTitle {
+	text-decoration: underline;
+}
+
+.header {
+	background-image: url('../img/bbq_meat_tray1.jpg');
+	max-height: 100%;
+	max-width: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #ffffff;
+}
+
+
+
+/* 
+	color palette: 	(FRESH)
+	#c3d853	(195,216,83)
+	#6c853f	(108,133,63)
+	#6bb056	(107,176,86)
+	#3cc98d	(60,201,141)
+	#accc8f	(172,204,143)
+*/
