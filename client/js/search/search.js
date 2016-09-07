@@ -5,15 +5,36 @@ angular.module('fridegly.search', [])
 
     $scope.data.ingredients = [];
 
+    /**
+     * @name addIngredients
+     * @desc Takes the user input ingredient and adds it to the array of current ingredients
+     * @returns undefined
+     */
     $scope.addIngredient = function () {
       $scope.data.ingredients.push($scope.ingredient);
       $scope.ingredient = '';
     };
 
-    $scope.deleteIngredient = function (e) {
-      console.log('deleting', this.ingredient);
+    /**
+     * @name deleteIngredient
+     * @desc When a user clicks the 'x' on a current ingredient, this will remove the
+     *       ingredient fron the list
+     * @returns undefined
+     */
+    $scope.deleteIngredient = function () {
       $scope.data.ingredients.splice($scope.data.ingredients.indexOf(this.ingredient), 1);
     };
+
+    /**
+     * @name sendIngredients
+     * @desc When a user clicks on the Get Recipes button, this will call the Search service
+     *       method, which sends the ingredients to the server
+     * @returns undefined
+     */
+    $scope.sendIngredients = function () {
+      Search.sendIngredients($scope.data.ingredients);
+    };
+
   });
 
 
