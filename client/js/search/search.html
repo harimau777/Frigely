@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="input-field col s6 offset-s3">
-      <form action="" ng-submit="addIngredient()">
+      <form>
 	<input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete" pattern="^\s*[A-Za-z]+\s*"/>
 	<label for="autocomplete-input">Enter Ingredient</label>
       </form>
@@ -9,7 +9,7 @@
 
     <div class='col s1'>
       <a class="btn-floating btn-medium waves-effect waves-light green">
-        <i class="material-icons">add</i>
+        <i class="material-icons" ng-click="addIngredient()">add</i>
       </a>
     </div>
 
