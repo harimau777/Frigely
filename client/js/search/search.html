@@ -2,16 +2,12 @@
   <div class='row'>
     <div class="input-field col s6 offset-s3">
       <form ng-submit="addIngredient()">
-	<input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete" pattern="^\s*[A-Za-z]+\s*"/>
+	<input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete" pattern="^\s*([A-Za-z]+\s*)+"/>
 	<label for="autocomplete-input">Enter Ingredient</label>
-  <span>{{message}}</span>
+	<button class="btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">add</i></button>
+	<span>{{message}}</span>
       </form>
-    </div>
-
-    <div class='col s1'>
-      <a class="btn-floating btn-medium waves-effect waves-light green">
-        <i class="material-icons" ng-click="addIngredient()">add</i>
-      </a>
+      
     </div>
 
     <div class='col s8'><h4>Selected Ingredients:</h4></div>
