@@ -15,12 +15,15 @@
 
     <div class='col s8'><h4>Selected Ingredients:</h4></div>
 
-    <div class='container'>
-      <div ng-repeat='ingredient in data.ingredients' class='row'>
-        <div class='col s4 chip'>   {{ingredient}}
-          <i class='close material-icons'>close</i>
+    <div class='container row'>
+      <div ng-repeat='ingredient in data.ingredients' class='col s4'>
+        <div class='chip'>   {{ingredient}}
+          <i ng-click='deleteIngredient()' value='apple' class='close material-icons'>close</i>
         </div>
       </div>
     </div>
+<!--     <div>
+      {{data.ingredients}}
+    </div> -->
   </div>
 <div>

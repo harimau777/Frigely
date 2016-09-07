@@ -10,6 +10,10 @@ angular.module('fridegly.search', [])
       $scope.ingredient = '';
     };
 
+    $scope.deleteIngredient = function (e) {
+      console.log('deleting', this.ingredient);
+      $scope.data.ingredients.splice($scope.data.ingredients.indexOf(this.ingredient), 1);
+    };
   });
 
 
