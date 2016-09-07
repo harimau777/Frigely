@@ -14,21 +14,24 @@ module.exports = function(app) {
   */
 
   app.post('/api/recipes', function (req, res) {
-    var ingredientsStr = req.body.ingredients.join('%2c+');
-    request.get({
-      headers: {
-        'X-Mashape-Key': config.api_key
-      },
-      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/' +
-        'recipes/findByIngredients?fillIngredients=false&ingredients=' +
-        ingredientsStr +
-        '&limitLicense=false&number=5&ranking=1' }, 
-      function(error, response, body) { 
-        if (!error && response.statusCode === 200) { 
-          res.send(body); 
-        } 
-      }
-    ); 
+    if (req.body.ingredients) {
+      var ingredientsStr = req.body.ingredients.join('%2c+');
+      request.get({
+        headers: {
+          'X-Mashape-Key': config.api_key
+        },
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/' +
+          'recipes/findByIngredients?fillIngredients=false&ingredients=' +
+          ingredientsStr +
+          '&limitLicense=false&number=5&ranking=1' }, 
+        function(error, response, body) { 
+          if (!error && response.statusCode === 200) { 
+            res.send(body); 
+          } 
+      }); 
+    } else {
+      res.status(400).send('No ingredients found');
+    }
   });
 
 };
