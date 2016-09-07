@@ -1,9 +1,11 @@
 /**
  * @name fridgely.recipes
- * @desc The angular controller for rendering recipes. 
+ * @desc The angular controller for rendering recipes.
  */
 angular.module('fridgely.recipes', [])
   .controller('RecipeController', function($scope, Search) {
+    $scope.data = {};
+
     $scope.data.recipes = [];
 
     /**
