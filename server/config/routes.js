@@ -19,7 +19,10 @@ module.exports = function(app) {
       headers: {
         'X-Mashape-Key': config.api_key
       },
-      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=' + ingredientsStr + '&limitLicense=false&number=5&ranking=1' }, 
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/' +
+        'recipes/findByIngredients?fillIngredients=false&ingredients=' +
+        ingredientsStr +
+        '&limitLicense=false&number=5&ranking=1' }, 
       function(error, response, body) { 
         if (!error && response.statusCode === 200) { 
           res.send(body); 
