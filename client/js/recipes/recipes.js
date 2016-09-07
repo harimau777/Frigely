@@ -20,5 +20,7 @@ angular.module('fridgely.recipes', [])
     };
 
     $scope.getIngredients();
+
+    //This toggles the display of the div that provides link to the search page
     $scope.showSearch = $scope.data.recipes.length === 0;
   });
