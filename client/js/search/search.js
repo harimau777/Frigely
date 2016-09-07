@@ -7,6 +7,7 @@ angular.module('fridegly.search', [])
 
     $scope.addIngredient = function () {
       $scope.data.ingredients.push($scope.ingredient);
+      $scope.ingredient = '';
     };
 
   });
