@@ -30,7 +30,7 @@ describe('', function() {
       request
         .post('http://127.0.0.1:8000/api/recipes')
         .on('response', (res) => {
-          expect(res.statusCode).to.not.equal(500);
+          expect(res.statusCode).to.equal(400);
           done();
         });
     });

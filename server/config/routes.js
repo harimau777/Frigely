@@ -30,7 +30,7 @@ module.exports = function(app) {
           } 
       }); 
     } else {
-      res.send('No ingredients found');
+      res.status(400).send('No ingredients found');
     }
   });
 
