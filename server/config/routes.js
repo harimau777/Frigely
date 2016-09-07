@@ -12,5 +12,6 @@ module.exports = function(app) {
     */
   app.post('/api/recipes', ingredientsController.getRecipesForIngredients);
 
+ 	app.post('/api/recipe' , ingredientsController.getRecipeId);
 
 };
