@@ -12,11 +12,6 @@ angular.module('fridegly.search', [])
   });
 
 
-
-
-
-
-
 //This may be used in the future to autocomplete ingredient words,  can be drawn from a database full of the ingredient list
 
 // $('input.autocomplete').autocomplete({
