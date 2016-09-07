@@ -10,7 +10,12 @@
 }
 
 .desc {
-	font-size: 15px;
+	font-size: 20px;
+}
+
+.LPtext {
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .foodPic {
@@ -32,7 +37,8 @@ h1.headerTitle {
 }
 
 .header {
-	background-image: url('../img/bbq_meat_tray1.jpg');
+	background-image: url('../img/lp-cuttingboard-display.jpg');
+	background-size: cover;
 	max-height: 100%;
 	max-width: 100%;
 	margin-top: 0px;
@@ -40,6 +46,15 @@ h1.headerTitle {
 	color: #ffffff;
 }
 
+/*.right-box {
+	background-color: #6bb056; 
+}*/
+
+/* a color-scheme change */
+/*nav {
+	background-color: #6bb056;
+}
+*/
 
 
 /* 
