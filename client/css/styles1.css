@@ -12,3 +12,12 @@
 .desc {
 	font-size: 15px;
 }
+
+.foodPic {
+  height: 150px;
+  width: auto;
+}
+
+.foodTitle {
+  font-size: 16px;
+}

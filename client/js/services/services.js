@@ -15,6 +15,8 @@ angular.module('fridgely.services', [])
         url: '/api/recipes',
         data: ingredients
       }).then(function(res) {
+        console.log(res);
+        recipes = res.data;
         return res.data;
       });
     };
