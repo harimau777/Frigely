@@ -1,7 +1,6 @@
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
@@ -16,6 +15,8 @@ module.exports = function(app, express) {
 
   // configuration
   mongoose.connect(configDB.url); //connect to database
+
+  require('./passport.js')(passport);
 
   app.use(morgan('dev')); // log every request to console
   app.use(cookieParser()); //reads cookies for auth

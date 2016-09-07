@@ -1,5 +1,6 @@
 var ingredientsController = require('../ingredients/ingredientsController.js');
 var helpers = require('./helpers.js');
+var passport = require('passport');
 // maybe recipes controller too
 
 module.exports = function(app) {
@@ -19,7 +20,11 @@ module.exports = function(app) {
  	app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
 
   app.post('/api/users/signin', userController.signin);
-  app.post('/api/users/signup', userController.signup);
+  app.post('/api/users/signup', passport.authenticate('local-signup', {
+    successRedirect : '/',
+    failureRedirect : '/api/users/signup',
+    failureFlash : true
+  }));
   app.get('/api/users/signedin', userController.checkAuth);
 };
 
