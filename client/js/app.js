@@ -10,6 +10,14 @@ angular.module('fridgely', [
 
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
+      .when('/login', {
+        templateUrl: 'js/auth/login.html',
+        constroller: 'AuthController'  
+      })
+      .when('/signup', {
+        templateUrl: 'js/auth/signup.html',
+        controller: 'AuthController'
+      })
       .when('/landing', {
         templateUrl: 'js/landing/landing.html',
         controller: 'LandingPageController'
