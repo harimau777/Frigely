@@ -18,7 +18,9 @@ module.exports = {
         headers: {
           'X-Mashape-Key': config.api_key
         },
-        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+ recipeId + '/information' }, 
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + 
+          recipeId + '/information'
+      }, 
         function(error, response, body) { 
           if (!error && response.statusCode === 200) { 
             res.send(body); 
