@@ -4,15 +4,16 @@ var request = require('request');
 
 module.exports = {
 
-	/**
-	  * @name getRecipeId
-	  * @desc Executes a get-request with unirest to spoonacular for a LIST of recipeIds
-	  * @param {???} array of ingredients
-	  * @returns list of recipeIds that match the passed in ingredients
-		*/
 	getRecipeId : (req, res) => {
 			if (req.body.recipeId) {
 			var recipeId = req.body.recipeId;
+  /**
+   * @name getRecipeId
+   * @desc Executes a get-request with unirest to spoonacular for a LIST of recipeIds
+   * @param {Request} - 
+   * @param {Response} - 
+   * @returns undefined
+   */
       request.get({
         headers: {
           'X-Mashape-Key': config.api_key
@@ -28,15 +29,15 @@ module.exports = {
     	}
 	},
 
-	/**
-    * @name getRecipesForIngredients
-    * @desc Sends a get-request to spoonacular findByIngredients API call
-    * @param {req, res} the request and response for calls
-    * @returns {obj} General Recipe info per string of ingredients
-    */
 
 	getRecipesForIngredients : (req, res) => {
 		if (req.body.ingredients) {
+  /**
+   * @name getRecipesForIngredients
+   * @desc Sends a get-request to spoonacular findByIngredients API call
+   * @param {req, res} the request and response for calls
+   * @returns {obj} General Recipe info per string of ingredients
+   */
       var ingredientsStr = req.body.ingredients.join('%2c+');
       request.get({
         headers: {
