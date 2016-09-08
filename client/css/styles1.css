@@ -46,6 +46,7 @@ h1.headerTitle {
 }
 
 .lp-header {
+	background-image: url('../img/lp-cuttingboard-display.jpg');
 }
 
 .collection {
@@ -55,14 +56,17 @@ h1.headerTitle {
 }
 
 .no-search {
-/*	margin-top: 5px;
-*/	background-size: cover;
+	background-size: cover;
 	background-color: #922d50;
 	padding-bottom: 5cm;
 	padding-top: 5cm;
 	max-height: 100%;
 	max-width: 100%;
 	color: #ffffff;
+}
+
+.right-side {
+	background-color: green;
 }
 
 .rep-header {
