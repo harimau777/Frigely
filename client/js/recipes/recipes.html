@@ -1,28 +1,28 @@
-<!-- Since we're not certain on the response of the server, this is hard to fill out -->
+<!-- Since we"re not certain on the response of the server, this is hard to fill out -->
 <div id="container" class="collection" ng-controller="RecipeController">
 
-	<div class='jumbotron valign center-align header rep-header'>
+	<div class="jumbotron valign center-align header rep-header">
 <!--   	<h3>Recipes</h3>   --> 
-		<h1 class='headerText'>Recipes</h1>
+		<h1 class="headerText">Recipes</h1>
  </div>
 
   <div ng-show="showSearch" >
-  	<div class='no-search valign center-align'>
-      <p class='no-search-text'>You currently do not have any recipes. Go to the
-        <a href='#/search'>Get Ingredients</a> page to start searching!</p>
+    <div class="no-search valign center-align">
+      <p class="no-search-text">You currently do not have any recipes. Go to the
+        <a href="#/search">Get Ingredients</a> page to start searching!</p>
     </div>
   </div>
 
-<div class ='row' ng-repeat="recipe in data.recipes">
-  <div class='col s8 recipes'> 
-    <a href="#!" class="collection-item row" ng-click='showSnippet(recipe)'>
-      <p class='foodTitle col s8'>{{recipe.title}}</p>
-      <img class='foodPic' ng-src={{recipe.image}} />
+<div class ="row" ng-repeat="recipe in data.recipes">
+  <div class="col s8 recipes"> 
+    <a href="#!" class="collection-item row" ng-click="showSnippet(recipe)">
+      <p class="foodTitle col s8">{{recipe.title}}</p>
+      <img class="foodPic" ng-src={{recipe.image}} />
     </a>
   </div>
-  <div class='col s4 scroll' id='recipe-snippet'>
+  <div class="col s4 scroll" id="recipe-snippet">
     <br>
-    <h3 class='valign center-align' ng-model='snippet'>{{snippet}}</h3>
+    <h3 class="valign center-align" ng-model="snippet">{{snippet}}</h3>
     <br>
   </div>
 </div>
@@ -30,8 +30,8 @@
 <!-- not working right now! goal is to have the recipe-snippet follow the user as they scroll through the items -->
 <!-- link: http://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you-scroll -->
  <script>
-    $('#container').scroll(function() { 
-    $('#recipe-snippet').css('top', $(this).scrollTop());
+    $("#container").scroll(function() { 
+    $("#recipe-snippet").css("top", $(this).scrollTop());
 	});
 </script>
 
