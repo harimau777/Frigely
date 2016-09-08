@@ -2,7 +2,6 @@ var ingredientsController = require('../ingredients/ingredientsController.js');
 // maybe recipes controller too
 
 module.exports = function(app) {
-  console.log('into routes');
 
   /**
     * @name /api/recipes 
@@ -15,5 +14,8 @@ module.exports = function(app) {
  	app.post('/api/recipe' , ingredientsController.getRecipeId);
 
  	app.post('/api/recipe/steps', ingredientsController.getRecipeSteps);
+
+ 	app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
+
 
 };
