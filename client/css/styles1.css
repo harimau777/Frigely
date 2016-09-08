@@ -32,11 +32,6 @@
   font-size: 16px;
 }
 
-/*
-h1.headerText { 
-	font-size: 2.8em;
-}*/
-
 h1.headerTitle {
 	text-decoration: underline;
 }
@@ -74,26 +69,90 @@ h1.headerTitle {
 	font-size: 4.2rem;
 }
 
-/*.no-search-text {
-	background-color: #E5C0E8;
-}*/
+.search-row {
+	padding-top: 50px;
 
-/*.right-box {
-	background-color: #6bb056; 
-}*/
-
-/* a color-scheme change */
-/*nav {
-	background-color: #6bb056;
 }
-*/
+
+.card-panel {
+	width: 600px;
+	/*right: 100px;*/	
+}
+
+button.btn.right.ingredients-button {
+	width: 200px;
+	background-color: #fb8c00;
+}
+
+button.recipes-button {
+	width: 200px;
+	background-color: #fb8c00;
+}
+
+.text-box-search{
+	border-bottom: 1px;
+	margin-top: 14.5px;
+	/*padding-bottom: 10px;*/
+	padding-left: 0.75rem;
+	width: 600px;
+	height: 143px;
+	background: rgb(54, 25, 25); /* Fall-back for browsers that don't
+                                  support rgba */
+  background: rgba(54, 25, 25, .5);
+  text-align: center;
+}
 
 
-/* 
-	color palette: 	(FRESH)
-	#c3d853	(195,216,83)
-	#6c853f	(108,133,63)
-	#6bb056	(107,176,86)
-	#3cc98d	(60,201,141)
-	#accc8f	(172,204,143)
-*/
+h4.search-h4-text {
+	padding-top: 65px;
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}
+
+.container.row.col.s12.m5.ingredients-search{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.left-side-search {
+	margin-bottom: 500px;
+	height: 100%;
+	/*below code is to create a transparent background*/
+	background: rgb(54, 25, 25); /* Fall-back for browsers that don't support rgba */
+  background: rgba(54, 25, 25, .5);
+}
+
+.search-container {
+	background: url('../img/lp-bbq-display.jpg') no-repeat 50% 50% fixed; 
+	padding-bottom: 5cm;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+/* colors the text white */
+.text-white {
+	color:white;
+}
+
+div.lorem {
+	color: white;
+	background: rgb(77, 182, 172);
+	background: rgba(77, 182, 172, .5);
+	margin-bottom: 50px;
+}
+
+span.search-page {
+/*	padding-bottom: 25px;*/
+}
+
+p.h4-size {
+	font-size: 4em;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+
+

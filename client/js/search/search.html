@@ -1,28 +1,85 @@
-<div class='container'>
-  <div class='row'>
-    <div class="input-field col s6 offset-s3">
+<div class='search-container'> <!-- had the class '.container' -->
+  <div class='row search-row container'> <!-- start of row -->
+    <div class="input-field col s6 pull-s1 left-side-search">
       <form ng-submit="addIngredient()">
-	<input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete" pattern="^\s*([A-Za-z]+\s*)+"/>
-	<label for="autocomplete-input">Enter Ingredient</label>
-	<button class="btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">add</i></button>
-	<span>{{message}}</span>
+	     <input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete text-white" pattern="^\s*([A-Za-z]+\s*)+"/>
+	     <label for="autocomplete-input">Enter Ingredient</label>
+        <!-- <button class="btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">add</i></button> -->
+        <button class="btn right ingredients-button" type="submit" name="action">Add!
+          <i class="material-icons right">add</i>
+        </button>
+        <br>
+
+        <span>{{message}}</span>
       </form>
-      
-    </div>
-
-    <div class='col s8'><h4>Selected Ingredients:</h4></div>
-
-    <div class='container row'>
-      <div ng-repeat='ingredient in data.ingredients' class='col s4'>
-        <div class='chip'>   {{ingredient}}
-          <i ng-click='deleteIngredient()' value='apple' class='close material-icons'>close</i>
+        <br>
+        <br>
+        <div>
+          <button ng-click='sendIngredients()' class="btn waves-effect waves-light right recipes-button" type="submit" name="action">Get Recipes!
+          <i class="material-icons right">send</i>
+          </button>
         </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class='lorem thin'>
+        <p class='h4-size'>Build <b>good</b> food</p>
+        <span class='search-page'>
+          Michigan State University Extension defines 'good food' as food that is 'healthy, green, fair and affordable'. 
+          <br><br>
+          We at fridgely disagree. 'Good food' doesn't have to be green, healthy, nor affordable (it's nice if it is though).
+          <br>We see good food to be food that has to TASTE good! 
+          <br><br>
+          fridgely helps turn ordinary food into 'good food'. Have you ever had a meal that consisted of a raw chicken, a sour lemon, and bowl of italian seasoning and pepper? I haven't, and surely would never want to. Actually, you probabl might die from eating such a meal as your stomach surely can't process raw chicken... Nonetheless, getting back to the point, fridgely helps provide you instructions to turn your bland and very individual ingredients into something spectacular! 
+          <br><br>
+          Start now, and punch in those ingredients!
+          </span>
+        <!-- link: http://msue.anr.msu.edu/news/defining_good_food-->
+        </div>
+    </div>
+
+
+    <div class='col s6 push-s1'>
+      <div class = "selected-ingredients-text text-box-search">
+        <h4 class='search-h4-text valign center-align'>SELECTED INGREDIENTS:</h4>
       </div>
+    <!-- </div> -->
+
+    <div class='container row col s12 m5 ingredients-search' id='ingredients-search'>
+      <div ng-repeat='ingredient in data.ingredients'>
+        
+        <div class='ingredient card-panel small blue-grey darken-1'> 
+            <!-- <div class="card small"> -->
+              <!--{{ ingredient }}-->
+                  <!-- <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+                  </div> -->
+                  <div class="card-content text-white">
+                    <span class="card-title activator text-white">{{ ingredient }}</span>
+                    <i class="material-icons right close" value='apple' ng-click='deleteIngredient()'>close</i>
+                  </div>
+<!--             </div>
+ -->        <!--</div>-->
+
+        <!-- focus on how to change this -->
+       <!--  <div class='chip'>   {{ingredient}}
+          <i ng-click='deleteIngredient()' value='apple' class='close material-icons'>close</i>
+        </div> -->
+        <!-- end of the chip -->
+
+      </div>
+    </div> <!-- end of the row-->
+
+
     </div>
-    <div>
-    <button ng-click='sendIngredients()'class="btn waves-effect waves-light" type="submit" name="action">Get Recipes!
-        <i class="material-icons right">send</i>
-      </button>
-    </div>
+    </div> <!-- end of row -->
   </div>
-<div>
+</div>
+
+
+
+
