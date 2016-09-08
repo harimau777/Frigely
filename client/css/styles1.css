@@ -74,6 +74,10 @@ h1.headerTitle {
 	font-size: 4.2rem;
 }
 
+.search-row {
+	padding-top: 50px;
+}
+
 /*.no-search-text {
 	background-color: #E5C0E8;
 }*/
@@ -89,11 +93,80 @@ h1.headerTitle {
 */
 
 
-/* 
-	color palette: 	(FRESH)
-	#c3d853	(195,216,83)
-	#6c853f	(108,133,63)
-	#6bb056	(107,176,86)
-	#3cc98d	(60,201,141)
-	#accc8f	(172,204,143)
-*/
+.card-panel {
+	width: 600px;
+	right: 100px;
+	
+}
+
+h4.search-h4-text {
+	color: white;
+	font-size: 50px;
+	font-style: underline;
+	background-color: green;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	width: 500px;
+}
+
+.ingredients-search {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.left-side-search {
+	padding-top: 50px;
+	margin-top: 200px;
+	margin-bottom: 500px;
+	height: 100%;
+	background-color: #ffffff;
+}
+
+.search-container {
+
+	/*max-height: 100%;
+	max-width: 100%;
+	padding-bottom: 5cm;
+	padding-right: -5cm;
+	padding-left: -5cm;
+	background: url('../img/lp-bbq-display.jpg') no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;*/
+
+	background: url('../img/lp-bbq-display.jpg') no-repeat 50% 50% fixed; 
+	padding-bottom: 5cm;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+/* colors the text white */
+.text-white {
+	color:white;
+}
+
+
+
+/* Retina display 
+@media screen and (min-width: 1024px){
+    .responsive-image{
+        background-image: url('../img/lp-bbq-display.jpg');
+    }
+}
+
+/* Desktop 
+@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+        background-image: url('../img/lp-bbq-display.jpg');
+    }
+}*/
+
+
+
+
+
+
