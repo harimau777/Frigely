@@ -19,7 +19,12 @@ module.exports = function(app) {
 
  	app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
 
-  // app.post('/api/users/signin', userController.signin);
+  app.post('/api/users/signin', passport.authenticate('local-login', {
+    successRedirect : '/',
+    failureRedirect: '/api/users/login',
+    failureflash: true
+  }));
+
   app.post('/api/users/signup', passport.authenticate('local-signup', {
     successRedirect : '/',
     failureRedirect : '/api/users/signup',

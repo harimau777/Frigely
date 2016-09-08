@@ -16,10 +16,8 @@ userSchema.methods.generateHash = function(password, callback) {
   });
 };
 
-userSchema.methods.validPassword = function(password, callback) {
-  bcrypt.compare(password, this.local.password, function(err, res) {
-    callback(res);
-  });
+userSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
 };
 
 User = mongoose.model('User', userSchema);
