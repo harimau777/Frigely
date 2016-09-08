@@ -89,4 +89,9 @@ module.exports = function(passport) {
       return done(null, user);
     });
   }));
+
+  //*************************************************
+  // FUTURE FACEBOOK, GOOGLE, GITHUB LOGIN ***********************************
+  //*************************************************
+
 };
