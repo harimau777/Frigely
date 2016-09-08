@@ -13,12 +13,27 @@
     </div>
   </div>
 
-
-  <div class='col s8 pull-s8 recipes'>
+<div class ='row'>
+  <div class='col s8 recipes'> 
 	  <a href="#!" class="collection-item row" ng-repeat="recipe in data.recipes">
-	    <p class='foodTitle col s3'>{{recipe.title}}</p>
+	    <p class='foodTitle col s8'>{{recipe.title}}</p>
 	    <img class='foodPic' ng-src={{recipe.image}} />
 	  </a>
 	 </div>
+	<div class='col s4 right-side recipe-snippet'>
+	 <br>
+	 	In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. Replacing meaningful content with placeholder text allows designers to design the form of the content before the content itself has been produced.[citation needed]
+
+The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.[citation needed]
+
+A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word-processing templates for its desktop publishing program PageMaker.[1][not in citation given]
+	 </div>
+</div>
+
+<!-- utilize jquery here -->
+<script>
+	$('.recipe-snippet').stick_in_parent();
+</script>
+
 </div>
 
