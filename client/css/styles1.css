@@ -1,7 +1,12 @@
 .header {
 	padding-top: 5cm;
 	padding-bottom: 5cm;
-	background-color: #eee;
+	background-size: cover;
+	max-height: 100%;
+	max-width: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #ffffff;
 }
 
 .foodly {
@@ -27,24 +32,51 @@
   font-size: 16px;
 }
 
-
+/*
 h1.headerText { 
 	font-size: 2.8em;
-}
+}*/
 
 h1.headerTitle {
 	text-decoration: underline;
 }
 
-.header {
+.rep-header {
+	background-image: url('../img/lp-crackers-display.jpeg');
+}
+
+.lp-header {
 	background-image: url('../img/lp-cuttingboard-display.jpg');
-	background-size: cover;
-	max-height: 100%;
-	max-width: 100%;
+}
+
+.collection {
+	border: 0px;
 	margin-top: 0px;
 	margin-bottom: 0px;
+}
+
+.no-search {
+	background-size: cover;
+	background-color: #922d50;
+	padding-bottom: 5cm;
+	padding-top: 5cm;
+	max-height: 100%;
+	max-width: 100%;
 	color: #ffffff;
 }
+
+.right-side {
+	background-color: green;
+}
+
+.rep-header {
+	color: #0e0d0d;
+	font-size: 4.2rem;
+}
+
+/*.no-search-text {
+	background-color: #E5C0E8;
+}*/
 
 /*.right-box {
 	background-color: #6bb056; 
