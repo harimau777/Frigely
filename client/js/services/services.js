@@ -15,10 +15,19 @@ angular.module('fridgely.services', [])
         url: '/api/recipes',
         data: ingredients
       }).then(function(res) {
-        console.log(res);
-        recipes = res.data;
+        // Maybe what we want to do here is then go through each returned recipe, 
+        //   and perform some more server side requests to get more recipe information.
+        //   If we do something like that, we might consider caching recipe searches in our db
+        //   or some other optimization. 
         $location.path('/recipes');
-        return res.data;
+        recipes = Promise.all(res.data.map(function(recipe) {
+          return $http({
+            method: 'GET',
+            url: `/api/recipe/${recipe.id}`
+          }).then(function(recipeInfo) {
+            return recipeInfo.data;
+          });
+        }));
       });
     };
 
@@ -27,10 +36,9 @@ angular.module('fridgely.services', [])
      * @desc Gives the stored recipes for whoever is asking for it
      * @returns list of recipes
      */
-
-     var getRecipes = function() {
+    var getRecipes = function() {
       return recipes;
-     };
+    };
 
     return {
       sendIngredients: sendIngredients,
