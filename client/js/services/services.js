@@ -45,7 +45,15 @@ angular.module('fridgely.services', [])
             
             // Then push the resulting information to all recipes. 
           }).then(function(recipeInfo) {
-            recipes.push(recipeInfo.data);
+            $http({
+              method: 'POST',
+              url: '/api/recipe/summary',
+              data: {
+                recipeId: recipeInfo.data.id
+              }
+            }).then(function(recipeSummary) {
+              recipes.push(extend(recipeInfo.data, recipeSummary.data));
+            });
           }).then(function() {
 
             // then redirect the user to the recipe list.
