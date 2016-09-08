@@ -78,6 +78,30 @@ module.exports = {
     } else {
       res.status(400).send('Invalid Recipe Id');
     }
+  },
+
+  /**
+    * @name getRecipeSummary
+    * @desc Executes a get-request to spoonacular for a recipe summary
+    * @param {recipeId}  the recipe id
+    * @returns summary for a given recipe
+    */
+  getRecipeSummary : (req, res) => {
+    if (req.body.recipeId) {
+    var recipeId = req.body.recipeId;
+    request.get({
+      headers: {
+        'X-Mashape-Key': config.api_key
+      },
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+ recipeId + '/summary' }, 
+      function(error, response, body) { 
+        if (!error && response.statusCode === 200) { 
+          res.send(body); 
+        } 
+    }); 
+    } else {
+      res.status(400).send('Invalid Recipe Id');
+    }
   }
 
 
