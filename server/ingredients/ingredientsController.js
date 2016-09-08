@@ -7,7 +7,7 @@ module.exports = {
 	/**
 	  * @name getRecipeId
 	  * @desc Executes a get-request with unirest to spoonacular for a LIST of recipeIds
-	  * @param {???} array of ingredients
+	  * @param {recipeId} the recipeId
 	  * @returns list of recipeIds that match the passed in ingredients
 		*/
 	getRecipeId : (req, res) => {
@@ -54,7 +54,32 @@ module.exports = {
     	} else {
       	res.status(400).send('No ingredients found');
     	}
-	}
+	},
+
+  /**
+    * @name getRecipeSteps
+    * @desc Executes a get-request to spoonacular for a list of recipe steps
+    * @param {recipeId}  the recipe id
+    * @returns list of steps for a given recipe
+    */
+  getRecipeSteps : (req, res) => {
+    if (req.body.recipeId) {
+    var recipeId = req.body.recipeId;
+    request.get({
+      headers: {
+        'X-Mashape-Key': config.api_key
+      },
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+ recipeId + '/analyzedInstructions' }, 
+      function(error, response, body) { 
+        if (!error && response.statusCode === 200) { 
+          res.send(body); 
+        } 
+    }); 
+    } else {
+      res.status(400).send('Invalid Recipe Id');
+    }
+  }
+
 
 
 }
