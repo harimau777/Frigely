@@ -1,10 +1,11 @@
 var ingredientsController = require('../ingredients/ingredientsController.js');
+var helpers = require('./helpers.js');
 // maybe recipes controller too
 
 module.exports = function(app) {
 
   /**
-    * @name /api/recipes 
+    * @name /api/recipes
     * @desc routes to /api/recipes, and calls .getRecipesForIngredients handler
     * @param {req, res} the request and response for calls
     * @returns {nothing}
@@ -17,5 +18,8 @@ module.exports = function(app) {
 
  	app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
 
-
+  app.post('/api/users/signin', userController.signin);
+  app.post('/api/users/signup', userController.signup);
+  app.get('/api/users/signedin', userController.checkAuth);
 };
+
