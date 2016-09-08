@@ -15,19 +15,22 @@ angular.module('fridgely.services', [])
         url: '/api/recipes',
         data: ingredients
       }).then(function(res) {
-        // Maybe what we want to do here is then go through each returned recipe, 
-        //   and perform some more server side requests to get more recipe information.
-        //   If we do something like that, we might consider caching recipe searches in our db
-        //   or some other optimization. 
-        $location.path('/recipes');
-        recipes = Promise.all(res.data.map(function(recipe) {
-          return $http({
+        
+        // For each recipe, get more info about the recipe. 
+        res.data.forEach(function(recipe) {
+          $http({
             method: 'GET',
             url: `/api/recipe/${recipe.id}`
+            
+            // Then push the resulting information to all recipes. 
           }).then(function(recipeInfo) {
-            return recipeInfo.data;
+            recipes.push(recipeInfo.data);
+          }).then(function() {
+
+            // then redirect the user to the recipe list.
+            $location.path('/recipes');
           });
-        }));
+        });
       });
     };
 

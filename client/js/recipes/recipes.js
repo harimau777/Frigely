@@ -15,10 +15,8 @@ angular.module('fridgely.recipes', [])
      * @returns {undefined}
      */
     $scope.getIngredients = function() {
-      Search.getRecipes().then(function(res) {
-        $scope.data.recipes = res;
-        console.log($scope.data.recipes);
-      });
+      $scope.data.recipes = Search.getRecipes();
+      console.log($scope.data.recipes); // DEBUG
     };
 
     $scope.getIngredients();
