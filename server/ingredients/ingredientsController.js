@@ -14,6 +14,11 @@ module.exports = {
    * @param {Response} - 
    * @returns undefined
    */
+  getRecipeId: (req, res) => {
+    console.log(req.params);
+    if (req.params) {
+      var recipeId = req.params.recipeId;
+      console.log('The recipeId is:', recipeId);
       request.get({
         headers: {
           'X-Mashape-Key': config.api_key
