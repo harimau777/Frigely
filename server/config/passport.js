@@ -17,6 +17,10 @@ module.exports = function(passport) {
     });
   });
 
+  //*************************************************
+  // LOCAL SIGNUP ***********************************
+  //*************************************************
+
   // Set-up for local strategy signup
   passport.use('local-signup', new LocalStrategy({
     usernameField : 'username',
@@ -28,7 +32,7 @@ module.exports = function(passport) {
     // needed for User.findOne to work
     process.nextTick(function() {
 
-      User.findone({ 'local.username' : username }, function(err, user) {
+      User.findOne({ 'local.username' : username }, function(err, user) {
         if (err) {
           return done(err);
         }
@@ -43,16 +47,25 @@ module.exports = function(passport) {
 
           //set up credentials
           newUser.local.username = username;
-          newUser.local.password = newUser.generateHash(password);
+          newUser.generateHash(password, function (hash) {
+            newUser.local.password = hash;
+            newUser.save(function(err) {
+              if(err) {
+                throw err;
+              }
+              return done(null, newUser);
+            });
 
-          newUser.save(function(err) {
-            if(err) {
-              throw err;
-            }
-            return done(null, newUser);
           });
+
         }
       });
     });
   }));
+
+  //*************************************************
+  // LOCAL LOGIN ***********************************
+  //*************************************************
+
+
 };

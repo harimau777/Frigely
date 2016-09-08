@@ -20,7 +20,7 @@ module.exports = function(app, express) {
 
   app.use(morgan('dev')); // log every request to console
   app.use(cookieParser()); //reads cookies for auth
-  app.use(bodyParser); // get information from html forms
+  // app.use(bodyParser); // get information from html forms
   app.use(bodyParser.json());
 
   // serves static files
@@ -29,7 +29,7 @@ module.exports = function(app, express) {
   //passport requirements
   app.use(session({ secret: 'ilovefridgelyitisthebest' }));
   app.use(passport.initialize());
-  app.user(passport.session()); //persistent login sess
+  app.use(passport.session()); //persistent login sess
   app.use(flash()); //flash messages in sessions
 
 };

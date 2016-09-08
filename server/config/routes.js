@@ -19,12 +19,12 @@ module.exports = function(app) {
 
  	app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
 
-  app.post('/api/users/signin', userController.signin);
+  // app.post('/api/users/signin', userController.signin);
   app.post('/api/users/signup', passport.authenticate('local-signup', {
     successRedirect : '/',
     failureRedirect : '/api/users/signup',
     failureFlash : true
   }));
-  app.get('/api/users/signedin', userController.checkAuth);
+  // app.get('/api/users/signedin', userController.checkAuth);
 };
 
