@@ -23,4 +23,24 @@ angular.module('fridgely.recipes', [])
 
     //This toggles the display of the div that provides link to the search page
     $scope.showSearch = $scope.data.recipes.length === 0;
+
+
+
+
+    //******** adding below
+
+    $scope.snippet = '';
+
+    /**
+     * @name showSnippet
+     * @desc Get the recipe the user clicked on to display that snippet
+     * @returns {undefined}
+     */
+    $scope.showSnippet = function(recipe) {
+      // recipe outputs:
+      /*Object {id: 524312, title: "savory squash puree", image: "https://spoonacular.com/recipeImages/savory-squash-puree-524312.jpg", imageType: "jpg", usedIngredientCount: 1…}
+      */
+      $scope.snippet = recipe.title;
+    }
+
   });
