@@ -2,11 +2,12 @@
  * @name fridgely.recipes
  * @desc The angular controller for rendering recipes.
  */
-angular.module('fridgely.recipes', [])
+angular.module('fridgely.recipes', ['ngSanitize'])
   .controller('RecipeController', function($scope, Search) {
     $scope.data = {};
 
     $scope.data.recipes = [];
+    
 
     /**
      * @name getIngredients
@@ -41,6 +42,6 @@ angular.module('fridgely.recipes', [])
       /*Object {id: 524312, title: "savory squash puree", image: "https://spoonacular.com/recipeImages/savory-squash-puree-524312.jpg", imageType: "jpg", usedIngredientCount: 1…}
       */
       $scope.snippet = recipe.title;
-    }
+    };
 
   });

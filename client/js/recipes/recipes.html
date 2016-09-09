@@ -20,7 +20,7 @@
       <div class="card-stacked">
         <div class="card-content">
 	  <span class="card-title">{{recipe.title}}</span>
-          <p>{{recipe.summary}}</p>
+          <p ng-bind-html="recipe.summary"></p>
 	  <h3 class="valign center-align" ng-model="snippet">{{snippet}}</h3>
         </div>
         <div class="card-action">
