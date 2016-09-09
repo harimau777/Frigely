@@ -12,7 +12,7 @@ angular.module('fridgely', [
     $routeProvider
       .when('/login', {
         templateUrl: 'js/auth/login.html',
-        constroller: 'AuthController'  
+        controller: 'AuthController'  
       })
       .when('/signup', {
         templateUrl: 'js/auth/signup.html',
