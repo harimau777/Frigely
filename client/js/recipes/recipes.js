@@ -42,6 +42,6 @@ angular.module('fridgely.recipes', ['ngSanitize'])
       /*Object {id: 524312, title: "savory squash puree", image: "https://spoonacular.com/recipeImages/savory-squash-puree-524312.jpg", imageType: "jpg", usedIngredientCount: 1…}
       */
       $scope.snippet = recipe.title;
-    }
+    };
 
   });
