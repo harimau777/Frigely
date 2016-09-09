@@ -73,7 +73,9 @@ h1.headerTitle {
 }
 
 
-/**** Styles below belong to ./search.html ****/
+/**** 
+			Styles below belong to ./search.html 
+****/
 
 .search-row {
 	padding-top: 50px;
@@ -162,6 +164,36 @@ p.h4-size {
 	margin-bottom: 10px;
 	margin-top: 0px;
 }
+
+/**** 
+			Styles below belong to ./login.html 
+****/
+
+.auth-form {
+	margin-top: 250px;
+
+}
+
+.signup-left {
+	background: rgb(77, 182, 172);
+	background: rgba(77, 182, 172, .5);
+  padding-bottom: 10cm;
+  height: 1020px;
+}
+
+.auth-text {
+	margin-top: 290px;
+	font-size: 4em;;
+	font-color: white;
+}
+
+.login-left {
+	background-color: #757575;
+  padding-bottom: 10cm;
+  height: 1020px;
+}
+
+
 
 
 
