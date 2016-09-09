@@ -1,31 +1,41 @@
-
-	<div class="row signup-form">
-		<form class="col s12">
-			<div class="input-field col s6 offset-s3">
-				<input id="username" type="text">
-				<label for="username">Username</label>
+<!-- <div class='container' ng-controller='LandingPageController'> -->
+<div class='container signup-container' id="signup-container" ng-controller='LandingPageController'>
+	<div class='row'>
+		<div class='row col s6 pull-s1 signup-left'>
+			<p class="auth-text thin center-align">Sign Up</p>
+		</div>
+		<div class='row col s6 push-s1'>
+			<div class="row auth-form">
+				<form> <!-- had a class of class="col s12" here -->
+					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
+						<input class="signup-input" id="username" type="text">
+						<label for="username">Username</label>
+					</div>
+				</form>
 			</div>
-		</form>
-	</div>
 
-	<div class="row">
-		<form class="col s12">
-			<div class="input-field col s6 offset-s3">
-				<input id="password" type="password">
-				<label for="password">Password</label>
+			<div class="row">
+				<form> <!-- had a class of class="col s12" here -->
+					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
+						<input class="signup-input"  id="password" type="password">
+						<label for="password">Password</label>
+					</div>
+				</form>
 			</div>
-		</form>
-	</div>
 
-	<div class="row">
-		<form class="col s12">
-			<div class="input-field col s6 offset-s3">
-				<input id="confirm-password" type="password">
-				<label for="confirm-password">Confirm password</label>
+			<div class="row">
+				<form> <!-- had a class of class="col s12" here -->
+					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
+						<input class="signup-input"  id="confirm-password" type="password">
+						<label for="confirm-password">Confirm password</label>
+					</div>
+				</form>
 			</div>
-		</form>
-	</div>
+			<div class="center-align">
+				<a class="waves-effect waves-light btn">Sign Up</a>
+			</div>
+		</div>
+	</div> <!-- end of large class='row'-->
 
-<div class="center-align">
-	<a class="waves-effect waves-light btn">Sign Up</a>
+
 </div>

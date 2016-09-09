@@ -1,22 +1,30 @@
-<div class="row signup-form">
-  <form class="col s12">
-    <div class="input-field col s6 offset-s3">
-      <input id="username" type="text">
-      <label for="username">Username</label>
+<div class="container" ng-controller="LandingPageController">
+  <div class="row">
+    <div class='row col s6 pull-s1 login-left'>
+      <p class="auth-text thin center-align">Login</p>
     </div>
-  </form>
-</div>
+    <div class="row col s6 push-s1"> <!-- class used to be: "row signup-form" -->
+      <div class="row auth-form">
+        <form> <!-- form used to have: class="col s12" -->
+          <div class="input-field"> <!-- class used to have: "input-field col s6 offset-s3"-->
+            <input id="username" type="text">
+            <label for="username">Username</label>
+          </div>
+        </form>
+      </div>
 
-<div class="row">
-  <form class="col s12">
-    <div class="input-field col s6 offset-s3">
-      <input id="password" type="password">
-      <label for="password">Password</label>
-    </div>
-  </form>
+      <div class="row"> 
+        <form> <!-- class used to be: "col s12" -->
+          <div class="input-field"> <!-- class ued to be: class="input-field col s6 offset-s3" -->
+            <input id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </form>
+      </div>
+      <div class="center-align">
+        <a class="waves-effect waves-light btn">Log in</a>
+      </div>
+    </div> <!-- end for "row col s6 push-s1" -->
+  </div> <!-- end of "row" -->
 </div>
-
-<div class="center-align">
-  <a class="waves-effect waves-light btn">Log in</a>
-</div>
-        
+          
