@@ -52,15 +52,15 @@ h1.headerTitle {
 
 .no-search {
 	background-size: cover;
-/*	background-color: #922d50;*/	
+	background-color: #922d50;	
 	padding-bottom: 5cm;
 	padding-top: 5cm;
 	max-height: 100%;
 	max-width: 100%;
-	color: black;
-	font-size: 20px;
+	color: white;
+	font-size: 20px;/*
 	background: rgb(77, 182, 172);
-	background: rgba(77, 182, 172, .5);
+	background: rgba(77, 182, 172, .5);*/
 }
 
 .right-side {
