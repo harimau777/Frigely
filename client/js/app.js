@@ -1,6 +1,7 @@
 // This file sets up the routes for fridgely
 
 angular.module('fridgely', [
+  'fridgely.auth',
   'fridgely.services',
   'fridgely.recipes',
   'fridgely.landing',
