@@ -125,11 +125,14 @@ h4.search-h4-text {
 
 .search-container {
 	background: url('../img/lp-bbq-display.jpg') no-repeat 50% 50% fixed; 
-	padding-bottom: 5cm;
   background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
+}
+
+.search-row {
+	margin-bottom: 0px;
 }
 
 /* colors the text white */

@@ -1,34 +1,32 @@
-<div class='search-container'> <!-- had the class '.container' -->
-  <div class='row search-row container'> <!-- start of row -->
+<div class="search-container" id="search-container"> <!-- had the class '.container' -->
+  <div class="row search-row container"> <!-- start of row -->
     <div class="input-field col s6 pull-s1 left-side-search">
       <form ng-submit="addIngredient()">
 	     <input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete text-white" pattern="^\s*([A-Za-z]+\s*)+"/>
 	     <label for="autocomplete-input">Enter Ingredient</label>
+        <!-- old button -->
         <!-- <button class="btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">add</i></button> -->
         <button class="btn right ingredients-button" type="submit" name="action">Add!
           <i class="material-icons right">add</i>
         </button>
         <br>
-
         <span>{{message}}</span>
       </form>
         <br>
         <br>
         <div>
-          <button ng-click='sendIngredients()' class="btn waves-effect waves-light right recipes-button" type="submit" name="action">Get Recipes!
+          <button ng-click="sendIngredients()" class="btn waves-effect waves-light right recipes-button" type="submit" name="action">Get Recipes!
           <i class="material-icons right">send</i>
           </button>
         </div>
-
         <br>
         <br>
         <br>
         <br>
         <br>
-
-        <div class='lorem thin'>
-        <p class='h4-size'>Build <b>good</b> food</p>
-        <span class='search-page'>
+        <div class="lorem thin">
+        <p class="h4-size">Build <b>good</b> food</p>
+        <span class="search-page">
           Michigan State University Extension defines 'good food' as food that is 'healthy, green, fair and affordable'. 
           <br><br>
           We at fridgely disagree. 'Good food' doesn't have to be green, healthy, nor affordable (it's nice if it is though).
@@ -43,41 +41,33 @@
     </div>
 
 
-    <div class='col s6 push-s1'>
+    <div class="col s6 push-s1">
       <div class = "selected-ingredients-text text-box-search">
-        <h4 class='search-h4-text valign center-align'>SELECTED INGREDIENTS:</h4>
+        <h4 class="search-h4-text valign center-align">SELECTED INGREDIENTS:</h4>
       </div>
-    <!-- </div> -->
-
-    <div class='container row col s12 m5 ingredients-search' id='ingredients-search'>
-      <div ng-repeat='ingredient in data.ingredients'>
-        
-        <div class='ingredient card-panel small blue-grey darken-1'> 
-            <!-- <div class="card small"> -->
-              <!--{{ ingredient }}-->
-                  <!-- <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
-                  </div> -->
-                  <div class="card-content text-white">
-                    <span class="card-title activator text-white">{{ ingredient }}</span>
-                    <i class="material-icons right close" value='apple' ng-click='deleteIngredient()'>close</i>
-                  </div>
-<!--             </div>
- -->        <!--</div>-->
-
-        <!-- focus on how to change this -->
-       <!--  <div class='chip'>   {{ingredient}}
-          <i ng-click='deleteIngredient()' value='apple' class='close material-icons'>close</i>
-        </div> -->
-        <!-- end of the chip -->
-
-      </div>
-    </div> <!-- end of the row-->
-
-
-    </div>
-    </div> <!-- end of row -->
-  </div>
+      <div class="container row col s12 m5 ingredients-search" id="ingredients-search">
+        <div ng-repeat="ingredient in data.ingredients">
+          
+          <div class="ingredient card-panel small blue-grey darken-1"> 
+              <!-- <div class="card small"> -->
+                <!--{{ ingredient }}-->
+                    <!-- <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+                    </div> -->
+                    <div class="card-content text-white">
+                      <span class="card-title activator text-white">{{ ingredient }}</span>
+                      <i class="material-icons right close" value="apple" ng-click="deleteIngredient()">close</i>
+                    </div>
+          <!-- old code behind the 'chip' -->
+            <!-- <div class='chip'>   {{ingredient}}
+              <i ng-click='deleteIngredient()' value='apple' class='close material-icons'>close</i>
+            </div> -->
+          <!-- end of the chip -->
+          </div>
+        </div> <!-- end of the ng-repeat-->
+      </div> <!-- end of ingredients-search-->
+    </div> <!-- end of push-s1 class -->
+  </div> <!-- end of row -->
 </div>
 
 
