@@ -1,11 +1,12 @@
 <!-- <div class='container' ng-controller='LandingPageController'> -->
-<div class='container signup-container' id="signup-container" ng-controller='LandingPageController'>
+<div class='container signup-container' id="signup-container" ng-controller='AuthController'>
 	<div class='row'>
 		<div class='row col s6 pull-s1 signup-left'>
 			<p class="auth-text thin center-align">Sign Up</p>
 		</div>
 		<div class='row col s6 push-s1'>
 			<div class="row auth-form">
+			  {{error}}
 				<form> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
 						<input class="signup-input" id="username" type="text">
