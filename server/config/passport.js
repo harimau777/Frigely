@@ -28,6 +28,7 @@ module.exports = function(passport) {
     passReqToCallback : true,
   },
   function(req, username, password, done) {
+    console.log('passport signup');
 
     // needed for User.findOne to work
     process.nextTick(function() {
@@ -39,6 +40,7 @@ module.exports = function(passport) {
 
         // check if username exists
         if (user) {
+          console.log('user exists');
           return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
         } else {
 
@@ -74,6 +76,7 @@ module.exports = function(passport) {
     passReqToCallback: true
   },
   function(req, username, password, done) {
+    console.log('passport login');
 
     User.findOne({'local.username' : username }, function(err, user) {
       if (err) { return done(err); }
@@ -85,7 +88,9 @@ module.exports = function(passport) {
       if (!user.validPassword(password)) {
         return done(null, false, req.flash('loginMessage', 'Incorrect password!'));
       }
-
+      var token = jwt.encode(user, 'secret');
+      console.log(token);
+      // res.json({token: token});
       return done(null, user);
     });
   }));

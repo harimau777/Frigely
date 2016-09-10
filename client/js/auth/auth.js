@@ -1,14 +1,24 @@
 angular.module('fridgely.auth', [])
-  .controller('AuthController', function($scope, Auth) {
+  .controller('AuthController', function($scope, $window, $location, Auth) {
 		// login-stuff
     $scope.user = {};
 
     $scope.signUp = function() {
-      if ($scope.validate()) {
+      $scope.user = {
+        username: $scope.username,
+        password: $scope.password
+      };
+
+      if ($scope.validate() && $scope.validatePW()) {
         Auth.signup($scope.user)
         .then(function (token) {
-          $window.localStorage.setIten('com.fridgely', token);
-          $location.path('/landing');
+          console.log(token);
+          if (token && token !== 'undefined') {
+            $window.localStorage.setItem('com.fridgely', token);
+            $location.path('/landing');
+          } else {
+            $scope.usernameMessage = 'Username is already taken';
+          }
         })
         .catch(function (error) {
           console.error(error);
@@ -17,10 +27,14 @@ angular.module('fridgely.auth', [])
     };
 
     $scope.login = function() {
+      $scope.user = {
+        username: $scope.username,
+        password: $scope.password
+      };
       if ($scope.validate()) {
         Auth.login($scope.user)
         .then(function(token) {
-          $window.localStorage.setIten('com.fridgely', token);
+          $window.localStorage.setItem('com.fridgely', token);
           $location.path('/landing');
         })
         .catch(function (error) {
@@ -49,7 +63,14 @@ angular.module('fridgely.auth', [])
         $scope.passwordMessage = '';
       }
 
+
+
+      return usernameIsValid && passwordIsValid;
+    };
+
+    $scope.validatePW = function () {
       // confirm password
+      var password = $scope.password;
       var confirmpassword = $scope.confirmPassword;
       var confirmpasswordsMatch = confirmpassword === password;
       if (!confirmpasswordsMatch) {
@@ -58,7 +79,7 @@ angular.module('fridgely.auth', [])
         $scope.confirmpasswordMessage = '';
       }
 
-      return usernameIsValid && passwordIsValid && confirmpasswordsMatch;
+      return confirmpasswordsMatch;
     };
 
     $scope.signout = Auth.signout;
