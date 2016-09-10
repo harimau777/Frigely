@@ -1,5 +1,5 @@
 angular.module('fridgely.auth', [])
-  .controller('AuthController', function($scope) {
+  .controller('AuthController', function($scope, Auth) {
 		// login-stuff
     $scope.user = {};
 
@@ -7,8 +7,8 @@ angular.module('fridgely.auth', [])
       if ($scope.validate()) {
         Auth.signup($scope.user)
         .then(function (token) {
-          $window.localStorage.setIten('com.shortly', token);
-          $location.path('/');
+          $window.localStorage.setIten('com.fridgely', token);
+          $location.path('/landing');
         })
         .catch(function (error) {
           console.error(error);
@@ -18,10 +18,10 @@ angular.module('fridgely.auth', [])
 
     $scope.login = function() {
       if ($scope.validate()) {
-        Auth.signin($scope.user)
+        Auth.login($scope.user)
         .then(function(token) {
-          $window.localStorage.setIten('com.shortly', token);
-          $location.path('/');
+          $window.localStorage.setIten('com.fridgely', token);
+          $location.path('/landing');
         })
         .catch(function (error) {
           console.error(error);
