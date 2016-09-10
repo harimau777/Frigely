@@ -34,8 +34,13 @@ angular.module('fridgely.auth', [])
       if ($scope.validate()) {
         Auth.login($scope.user)
         .then(function(token) {
-          $window.localStorage.setItem('com.fridgely', token);
-          $location.path('/landing');
+          console.log(token);
+          if (token && token !== 'undefined') {
+            $window.localStorage.setItem('com.fridgely', token);
+            $location.path('/landing');
+          } else {
+            $scope.usernameMessage = 'Invalid username and password combination.';
+          }
         })
         .catch(function (error) {
           console.error(error);

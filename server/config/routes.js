@@ -22,10 +22,10 @@ module.exports = function(app) {
 
 
   app.post('/api/users/login', passport.authenticate('local-login', {
-    successRedirect : '/#/landing',
     failureRedirect: '/#/login',
-    failureflash: true
-  }));
+  }), function(req, res) {
+    helpers.tokenize(req, res);
+  });
 
   app.post('/api/users/signup', passport.authenticate('local-signup',
     {failureRedirect: '/#/signup'}),

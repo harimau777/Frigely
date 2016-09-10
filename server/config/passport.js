@@ -88,9 +88,6 @@ module.exports = function(passport) {
       if (!user.validPassword(password)) {
         return done(null, false, req.flash('loginMessage', 'Incorrect password!'));
       }
-      var token = jwt.encode(user, 'secret');
-      console.log(token);
-      // res.json({token: token});
       return done(null, user);
     });
   }));
