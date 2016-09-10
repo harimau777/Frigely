@@ -28,7 +28,6 @@ module.exports = function(passport) {
     passReqToCallback : true,
   },
   function(req, username, password, done) {
-
     // needed for User.findOne to work
     process.nextTick(function() {
 
@@ -39,6 +38,7 @@ module.exports = function(passport) {
 
         // check if username exists
         if (user) {
+          console.log('user exists');
           return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
         } else {
 
@@ -85,7 +85,6 @@ module.exports = function(passport) {
       if (!user.validPassword(password)) {
         return done(null, false, req.flash('loginMessage', 'Incorrect password!'));
       }
-
       return done(null, user);
     });
   }));

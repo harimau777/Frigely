@@ -10,36 +10,24 @@
 			  <span ng-bind="passwordMessage"></span><br>
 			  <span ng-bind="confirmpasswordMessage"></span><br>
 
-				<form> <!-- had a class of class="col s12" here -->
+				<form ng-submit='signUp()'> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
 						<input class="signup-input" id="username" ng-model="username" type="text">
 						<label for="username">Username</label>
 					</div>
-				</form>
-			</div>
-
-			<div class="row">
-				<form> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
 						<input class="signup-input"  id="password" ng-model="password" type="password">
 						<label for="password">Password</label>
 					</div>
-				</form>
-			</div>
-
-			<div class="row">
-				<form> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
 						<input class="signup-input"  id="confirm-password" ng-model="confirmPassword" type="password">
 						<label for="confirm-password">Confirm password</label>
 					</div>
+					<div class="center-align">
+						<button class="waves-effect waves-light btn">Sign Up</button>
+					</div>
 				</form>
-			</div>
-			<div class="center-align">
-				<a class="waves-effect waves-light btn" ng-click="signUp()">Sign Up</a>
 			</div>
 		</div>
 	</div> <!-- end of large class='row'-->
-
-
 </div>

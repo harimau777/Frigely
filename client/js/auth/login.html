@@ -8,26 +8,21 @@
         <span ng-bind="usernameMessage"></span><br>
         <span ng-bind="passwordMessage"></span><br>
 
-        <form> <!-- form used to have: class="col s12" -->
+        <form ng-submit='login()'> <!-- form used to have: class="col s12" -->
           <div class="input-field"> <!-- class used to have: "input-field col s6 offset-s3"-->
             <input id="username" ng-model="username" type="text">
             <label for="username">Username</label>
           </div>
-        </form>
-      </div>
-
-      <div class="row"> 
-        <form> <!-- class used to be: "col s12" -->
           <div class="input-field"> <!-- class ued to be: class="input-field col s6 offset-s3" -->
             <input id="password" ng-model="password" type="password">
             <label for="password">Password</label>
           </div>
+          <div class="center-align">
+            <button class="waves-effect waves-light btn">Log in</button>
+          </div>
         </form>
-      </div>
-      <div class="center-align">
-        <a class="waves-effect waves-light btn" ng-click="login()">Log in</a>
       </div>
     </div> <!-- end for "row col s6 push-s1" -->
   </div> <!-- end of "row" -->
 </div>
-          
+

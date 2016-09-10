@@ -11,8 +11,6 @@ var configDB = require('./database.js');
 module.exports = function(app, express) {
   app.use(morgan('dev'));
 
-	console.log('into middleware');
-
   // configuration
   mongoose.connect(configDB.url); //connect to database
 
