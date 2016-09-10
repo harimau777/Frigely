@@ -34,6 +34,11 @@ angular.module('fridgely', [
         controller: 'SearchController',
         authenticate: true
       })
+      .when('/signout', {
+        templateUrl: 'js/auth/signout.html',
+        controller: 'AuthController',
+        authenticate: true
+      })
       .otherwise({
         redirectTo: '/landing'
       });
