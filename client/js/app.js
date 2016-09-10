@@ -43,9 +43,15 @@ angular.module('fridgely', [
         redirectTo: '/landing'
       });
 
+      //interceptor for every ajax request
       $httpProvider.interceptors.push('AttachTokens');
   })
   .factory('AttachTokens', function ($window) {
+    /**
+     * @name attach
+     * @desc takes the token from the browser and sends it as a header for the request
+     * @returns Request Object
+     */
     var attach = {
       request: function (object) {
         var jwt = $window.localStorage.getItem('com.fridgely');
@@ -59,6 +65,9 @@ angular.module('fridgely', [
     return attach;
     })
   .run(function ($rootScope, $location, Auth) {
+    /**
+     * @desc Makes sure user is authorized (with token) every route change
+     */
     $rootScope.$on('$routeChangeStart', function( evt, next, current) {
       if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
         $location.path('/login');

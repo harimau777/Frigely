@@ -3,6 +3,11 @@ angular.module('fridgely.auth', [])
 		// login-stuff
     $scope.user = {};
 
+    /**
+     * @name signUp
+     * @desc Takes user inputted field, checks to see if the fields are valid and passwords match
+     *  Gets a token back from the server and attaches it to the browser.
+     */
     $scope.signUp = function() {
       $scope.user = {
         username: $scope.username,
@@ -25,6 +30,11 @@ angular.module('fridgely.auth', [])
       }
     };
 
+    /**
+     * @name signUp
+     * @desc Takes user inputted field, checks to see if user and password matches in database
+     *  Gets a token back from the server and attaches it to the browser.
+     */
     $scope.login = function() {
       $scope.user = {
         username: $scope.username,

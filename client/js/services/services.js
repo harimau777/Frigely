@@ -79,6 +79,11 @@ angular.module('fridgely.services', [])
     };
   })
   .factory('Auth', function($http, $location, $window)  {
+    /**
+     * @name login
+     * @desc Issues a post request to the server to attempt a login with user input info
+     * @returns A browser token if sucessful login. If not, returns undefined
+     */
     var login = function(user) {
       return $http({
         method: 'POST',
@@ -90,6 +95,11 @@ angular.module('fridgely.services', [])
       });
     };
 
+    /**
+     * @name signup
+     * @desc Issues a post request to the server to attempt a signup with user input info
+     * @returns A browser token if sucessful login. If not, returns undefined
+     */
     var signup = function (user) {
       return $http ({
         method: 'POST',
@@ -101,10 +111,20 @@ angular.module('fridgely.services', [])
       });
     };
 
+    /**
+     * @name isAuth
+     * @desc Checks if there is a token attached to the browser
+     * @returns Boolean
+     */
       var isAuth = function() {
         return !!$window.localStorage.getItem('com.fridgely');
       };
 
+      /**
+       * @name signout
+       * @desc Removes the token attached to the browser
+       * @returns undefined
+       */
       var signout = function() {
         $window.localStorage.removeItem('com.fridgely');
         $location.path('/login');
