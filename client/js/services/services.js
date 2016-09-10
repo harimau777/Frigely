@@ -102,12 +102,12 @@ angular.module('fridgely.services', [])
     };
 
       var isAuth = function() {
-        return !!$window.localStorage.getItem('com.shortly');
+        return !!$window.localStorage.getItem('com.fridgely');
       };
 
       var signout = function() {
-        $window.localStorage.removeItem('com.shortly');
-        $location.path('/signin');
+        $window.localStorage.removeItem('com.fridgely');
+        $location.path('/login');
       };
 
       return {
@@ -116,4 +116,6 @@ angular.module('fridgely.services', [])
         isAuth: isAuth,
         signout: signout
       };
+
   });
+
