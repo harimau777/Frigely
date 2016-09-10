@@ -31,9 +31,7 @@ module.exports = {
   },
 
   tokenize: function (req, res) {
-    console.log(req.user);
     var token = jwt.encode(req.user.local.username, 'secret');
-    console.log(token);
     res.json({token: token});
   }
 };

@@ -46,11 +46,9 @@ angular.module('fridgely', [
       $httpProvider.interceptors.push('AttachTokens');
   })
   .factory('AttachTokens', function ($window) {
-    console.log('Attaching Tokens');
     var attach = {
       request: function (object) {
         var jwt = $window.localStorage.getItem('com.fridgely');
-        console.log('jwt: ', jwt);
         if (jwt) {
           object.headers['x-access-token'] = jwt;
         }

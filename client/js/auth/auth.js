@@ -12,7 +12,6 @@ angular.module('fridgely.auth', [])
       if ($scope.validate() && $scope.validatePW()) {
         Auth.signup($scope.user)
         .then(function (token) {
-          console.log(token);
           if (token && token !== 'undefined') {
             $window.localStorage.setItem('com.fridgely', token);
             $location.path('/landing');
@@ -34,7 +33,6 @@ angular.module('fridgely.auth', [])
       if ($scope.validate()) {
         Auth.login($scope.user)
         .then(function(token) {
-          console.log(token);
           if (token && token !== 'undefined') {
             $window.localStorage.setItem('com.fridgely', token);
             $location.path('/landing');

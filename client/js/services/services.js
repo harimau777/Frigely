@@ -80,27 +80,23 @@ angular.module('fridgely.services', [])
   })
   .factory('Auth', function($http, $location, $window)  {
     var login = function(user) {
-      console.log('logging in...');
       return $http({
         method: 'POST',
         url: '/api/users/login',
         data: user
       })
       .then(function (resp) {
-        console.log('login response', resp);
         return resp.data.token;
       });
     };
 
     var signup = function (user) {
-      console.log('signing up...');
       return $http ({
         method: 'POST',
         url: '/api/users/signup',
         data: user
       })
       .then( function (resp) {
-        console.log('signup resp', resp);
         return resp.data.token;
       });
     };

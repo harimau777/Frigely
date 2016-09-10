@@ -28,8 +28,6 @@ module.exports = function(passport) {
     passReqToCallback : true,
   },
   function(req, username, password, done) {
-    console.log('passport signup');
-
     // needed for User.findOne to work
     process.nextTick(function() {
 
@@ -76,7 +74,6 @@ module.exports = function(passport) {
     passReqToCallback: true
   },
   function(req, username, password, done) {
-    console.log('passport login');
 
     User.findOne({'local.username' : username }, function(err, user) {
       if (err) { return done(err); }
