@@ -1,6 +1,7 @@
 // This file sets up the routes for fridgely
 
 angular.module('fridgely', [
+  'fridgely.auth',
   'fridgely.services',
   'fridgely.recipes',
   'fridgely.landing',
@@ -12,7 +13,7 @@ angular.module('fridgely', [
     $routeProvider
       .when('/login', {
         templateUrl: 'js/auth/login.html',
-        constroller: 'AuthController'  
+        controller: 'AuthController'  
       })
       .when('/signup', {
         templateUrl: 'js/auth/signup.html',

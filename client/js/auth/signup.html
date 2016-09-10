@@ -1,14 +1,18 @@
 <!-- <div class='container' ng-controller='LandingPageController'> -->
-<div class='container signup-container' id="signup-container" ng-controller='LandingPageController'>
+<div class='container signup-container' id="signup-container" ng-controller='AuthController'>
 	<div class='row'>
 		<div class='row col s6 pull-s1 signup-left'>
 			<p class="auth-text thin center-align">Sign Up</p>
 		</div>
 		<div class='row col s6 push-s1'>
 			<div class="row auth-form">
+			  <span ng-bind="usernameMessage"></span><br>
+			  <span ng-bind="passwordMessage"></span><br>
+			  <span ng-bind="confirmpasswordMessage"></span><br>
+
 				<form> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
-						<input class="signup-input" id="username" type="text">
+						<input class="signup-input" id="username" ng-model="username" type="text">
 						<label for="username">Username</label>
 					</div>
 				</form>
@@ -17,7 +21,7 @@
 			<div class="row">
 				<form> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
-						<input class="signup-input"  id="password" type="password">
+						<input class="signup-input"  id="password" ng-model="password" type="password">
 						<label for="password">Password</label>
 					</div>
 				</form>
@@ -26,13 +30,13 @@
 			<div class="row">
 				<form> <!-- had a class of class="col s12" here -->
 					<div class="input-field"> <!-- had a class of:"col s6 offset-s3" here-->
-						<input class="signup-input"  id="confirm-password" type="password">
+						<input class="signup-input"  id="confirm-password" ng-model="confirmPassword" type="password">
 						<label for="confirm-password">Confirm password</label>
 					</div>
 				</form>
 			</div>
 			<div class="center-align">
-				<a class="waves-effect waves-light btn">Sign Up</a>
+				<a class="waves-effect waves-light btn" ng-click="signUp()">Sign Up</a>
 			</div>
 		</div>
 	</div> <!-- end of large class='row'-->
