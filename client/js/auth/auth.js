@@ -1,17 +1,32 @@
 angular.module('fridgely.auth', [])
   .controller('AuthController', function($scope) {
 		// login-stuff
+    $scope.user = {};
 
     $scope.signUp = function() {
       if ($scope.validate()) {
-        // process signup
-        // forward
+        Auth.signup($scope.user)
+        .then(function (token) {
+          $window.localStorage.setIten('com.shortly', token);
+          $location.path('/');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
       }
     };
 
     $scope.login = function() {
       if ($scope.validate()) {
-        // forward
+        Auth.signin($scope.user)
+        .then(function(token) {
+          $window.localStorage.setIten('com.shortly', token);
+          $location.path('/');
+        })
+        .catch(function (error) {
+          console.error(error);
+          $scope.text = 'Username or Password Invalid.';
+        });
       }
     };
 
@@ -33,7 +48,7 @@ angular.module('fridgely.auth', [])
       } else {
         $scope.passwordMessage = '';
       }
-         
+
       // confirm password
       var confirmpassword = $scope.confirmPassword;
       var confirmpasswordsMatch = confirmpassword === password;
@@ -45,4 +60,7 @@ angular.module('fridgely.auth', [])
 
       return usernameIsValid && passwordIsValid && confirmpasswordsMatch;
     };
+
+    $scope.signout = Auth.signout;
   });
+

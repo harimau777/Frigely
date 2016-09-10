@@ -1,9 +1,9 @@
 /**
  * @name extend
  * @desc Given two objects, return an object that has all of the key/value pairs of obj1 along
- *   with the key/value pairs of obj2. 
+ *   with the key/value pairs of obj2.
  * @param {Object} ob1 - Any type of object.
- * @param {Object} ob2 - Any type of object. 
+ * @param {Object} ob2 - Any type of object.
  * @returns {Object} Retuns an object that is a combination of the two objects.
  */
 var extend = function(ob1, ob2) {
@@ -36,14 +36,14 @@ angular.module('fridgely.services', [])
         url: '/api/recipes',
         data: ingredients
       }).then(function(res) {
-        
-        // For each recipe, get more info about the recipe. 
+
+        // For each recipe, get more info about the recipe.
         res.data.forEach(function(recipe) {
           $http({
             method: 'GET',
             url: `/api/recipe/${recipe.id}`
-            
-            // Then push the resulting information to all recipes. 
+
+            // Then push the resulting information to all recipes.
           }).then(function(recipeInfo) {
             $http({
               method: 'POST',
@@ -77,4 +77,43 @@ angular.module('fridgely.services', [])
       getRecipes: getRecipes,
       recipes: recipes
     };
+  })
+  .factory('Auth', function($http, $location, $window)  {
+    var login = function(user) {
+      return $http({
+        method: 'POST',
+        url: '/api/users/login',
+        data: user
+      })
+      .then(function (resp) {
+        return resp.data.token;
+      });
+    };
+
+    var signup = function (user) {
+      return $http ({
+        method: 'POST',
+        url: '/apit/users/signup',
+        data: user
+      })
+      .then( function (resp) {
+        return resp.data.token;
+      });
+    };
+
+      var isAuth = function() {
+        return !!$window.localStorage.getItem('com.shortly');
+      };
+
+      var signout = function() {
+        $window.localStorage.removeItem('com.shortly');
+        $location.path('/signin');
+      };
+
+      return {
+        login: login,
+        signup: signup,
+        isAuth: isAuth,
+        signout: signout
+      };
   });
