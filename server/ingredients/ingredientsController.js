@@ -84,20 +84,20 @@ module.exports = {
             newRes.push(recipe);
             newRes.push(getSummary(recipe.id));
             newRes.push(getSteps(recipe.id));
+            newRes.push(getInfo(recipe.id));
           });
 
           Promise.all(newRes).then(values => {
             var sol = [];
 
-            for (var i = 0; i < values.length; i += 3) {
+            for (var i = 0; i < values.length; i += 4) {
               var tmp = values[i];
-              tmp['summary'] = JSON.parse(values[i + 1]).summary;
-              tmp['steps'] = JSON.parse(values[i + 2]).steps;
-              if (JSON.parse(values[i + 2])[0]) {
-                tmp['steps'] = JSON.parse(values[i + 2])[0].steps;
-              } else {
-                tmp['steps'] = [];
-              }
+              _.extend(
+                tmp,
+                JSON.parse(values[i + 1]),
+                JSON.parse(values[i + 2]),
+                JSON.parse(values[i + 3])
+              );
               sol.push(tmp);
             }
 
