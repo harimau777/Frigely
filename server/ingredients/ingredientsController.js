@@ -59,24 +59,31 @@ var getInfo = function(id) {
   return getPromise('GET', `${id}/information`);
 };
 
+/**
+ * @name getRecipes
+ * @desc Given either a single ingredient or a list of ingredients and optionally the number of 
+ *   results we would like back, return a promise that resolves of a list of objects containing 
+ *   recipe information.  
+ * @param {string|string[]} ing - A string or a list of strings of ingredient names.
+ * @param {number} [count=5] - The number of results to return.
+ * @returns {Promise<object>} Returns a promise that will resolve to an object.
+ */
+var getRecipes = function(ingr, count = 5) {
+  var ingredientsStr = typeof ingr === 'string' ? [ingr] : ingr.join('%2c+');
+
+  return getPromise('GET', 'findByIngredients?fillIngredients=false&ingredients=' +
+      `${ingredientsStr}&limitLicense=false&number=${count}&ranking=1`)
+  .then(result => {
+    return JSON.parse(result);
+  });
+};
+
 
 module.exports = {
   
-  /**
-   * @name getRecipesForIngredients
-   * @desc Sends a get-request to spoonacular findByIngredients API call
-   * @param {req, res} the request and response for calls
-   * @returns {obj} General Recipe info per string of ingredients
-   */
   getRecipesForIngredients: (req, res) => {
     if (req.query.ingredients) {
-      var ingredientsStr = req.query.ingredients.join('%2c+');
-
-      getPromise('GET', 'findByIngredients?fillIngredients=false&ingredients=' +
-                 `${ingredientsStr}&limitLicense=false&number=5&ranking=1`)
-        .then(result => {
-          return JSON.parse(result);
-        })
+      getRecipes(req.query.ingredients)
         .then(result => {
           var newRes = [];
 
