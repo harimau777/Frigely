@@ -31,35 +31,13 @@ angular.module('fridgely.services', [])
      * @returns {Promise.???} Return a promise containing a list of ingredientes.
      */
     var sendIngredients = function(ingredients) {
+      console.log(`The ingredients we're sending are ${ingredients}`);          // DEBUG
       return $http({
         method: 'GET',
         url: '/api/recipes',
         params: ingredients
       }).then(function(res) {
-
-        // For each recipe, get more info about the recipe.
-        res.data.forEach(function(recipe) {
-          $http({
-            method: 'GET',
-            url: `/api/recipe/${recipe.id}`
-
-            // Then push the resulting information to all recipes.
-          }).then(function(recipeInfo) {
-            $http({
-              method: 'POST',
-              url: '/api/recipe/summary',
-              data: {
-                recipeId: recipeInfo.data.id
-              }
-            }).then(function(recipeSummary) {
-              recipes.push(extend(recipeInfo.data, recipeSummary.data));
-            });
-          }).then(function() {
-
-            // then redirect the user to the recipe list.
-            $location.path('/recipes');
-          });
-        });
+        console.log('The result back from the server is;', res);
       });
     };
 

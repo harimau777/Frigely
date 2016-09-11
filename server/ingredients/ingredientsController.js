@@ -39,8 +39,10 @@ module.exports = {
    * @returns {obj} General Recipe info per string of ingredients
    */
   getRecipesForIngredients: (req, res) => {
-    if (req.body.ingredients) {
-      var ingredientsStr = req.body.ingredients.join('%2c+');
+    console.log('getRepicesForIngredients req.params: ', req.query);    // DEBUG
+    if (req.query) {
+      var ingredientsStr = req.query.ingredients.join('%2c+');
+      console.log(ingredientsStr); // DEBUG
       request.get({
         headers: {
           'X-Mashape-Key': config.api_key
