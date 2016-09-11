@@ -48,6 +48,17 @@ var getSummary = function(id) {
   return getPromise('GET', `${id}/summary`);
 };
 
+/**
+ * @name getInfo
+ * @desc Given a string id representing a recipe id, return a promise that will resolve to an 
+ *   object containing the recipe information. 
+ * @param {string} id - A string representing a recipe id. 
+ * @returns {Promise<Object>} Returns a promise that will resolve to an object. 
+ */
+var getInfo = function(id) {
+  return getPromise('GET', `${id}/information`);
+};
+
 
 module.exports = {
   
