@@ -5,23 +5,6 @@ var rp = require('request-promise');
 
 
 /**
- * @name extend
- * @desc Given two objects ob1 and ob2, add the key/value pairs of ob2 to ob1. 
- * @param {Object} ob1 - An object that we want to add key/value pairs to.
- * @param {Object} ob2 - An object with key/value pairs of interest. 
- * @returns {Object}
- */
-var extend = function(ob1, ob2) {
-  for (var key in ob2) {
-    if (!(key in ob1)) {
-      ob1[key] = ob2[key];
-    }
-  }
-
-  return ob1;
-};
-
-/**
  * @name getPromise
  * @desc Given two strings, method representing an HTTP method, and uri representing the end of a spoonacular uri endpoint, return a promise that resolves to an object that is the response of an REST call to the spoonacular endpoint. 
  * @param {string} method - The HTTP method (GET, POST, etc.) that we would like to execute. 
@@ -73,33 +56,41 @@ module.exports = {
    * @returns {obj} General Recipe info per string of ingredients
    */
   getRecipesForIngredients: (req, res) => {
-    console.log('getRepicesForIngredients req.params: ', req.query);    // DEBUG
     if (req.query.ingredients) {
       var ingredientsStr = req.query.ingredients.join('%2c+');
       console.log(ingredientsStr); // DEBUG
 
       getPromise('GET', 'findByIngredients?fillIngredients=false&ingredients=' +
                  `${ingredientsStr}&limitLicense=false&number=5&ranking=1`)
-        .then(function(result) {
+        .then(result => {
           return JSON.parse(result);
         })
-        .then(function(result) {
-          var sol = [];
-          
-          // For each recipe that is returned, we need to perform more API calls to get
-          //   the recipe summaries, steps, etc. We then extend the current recipe with
-          //   those results.
+        .then(result => {
+          var newRes = [];
+
           result.forEach(recipe => {
-            var tmp = recipe;
-            
-            Promise.all([getSummary(recipe.id), getSteps(recipe.id)]).then(values => {
-              values.forEach(value => extend(tmp, value));
-              console.log('The resulting recipe is:', tmp);
-              sol.push(tmp);
-            });
+            newRes.push(recipe);
+            newRes.push(getSummary(recipe.id));
+            newRes.push(getSteps(recipe.id));
           });
 
-          res.send(sol);
+          Promise.all(newRes).then(values => {
+            var sol = [];
+
+            for (var i = 0; i < values.length; i += 3) {
+              var tmp = values[i];
+              tmp['summary'] = JSON.parse(values[i + 1]).summary;
+              tmp['steps'] = JSON.parse(values[i + 2]).steps;
+              if (JSON.parse(values[i + 2])[0]) {
+                tmp['steps'] = JSON.parse(values[i + 2])[0].steps;
+              } else {
+                tmp['steps'] = [];
+              }
+              sol.push(tmp);
+            }
+
+            res.send(sol);
+          });
         })
         .catch(function(err) {
           console.log(`There was an error: ${err}`);
