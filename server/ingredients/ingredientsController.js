@@ -1,6 +1,24 @@
 var unirest = require('unirest');
 var config = require('../env/config.js');
 var request = require('request');
+/**
+ * @name extend
+ * @desc Given two objects ob1 and ob2, add the key/value pairs of ob2 to ob1. 
+ * @param {Object} ob1 - An object that we want to add key/value pairs to.
+ * @param {Object} ob2 - An object with key/value pairs of interest. 
+ * @returns {Object}
+ */
+var extend = function(ob1, ob2) {
+  for (var key in ob2) {
+    if (!(key in ob1)) {
+      ob1[key] = ob2[key];
+    }
+  }
+
+  return ob1;
+};
+
+
 
 module.exports = {
 

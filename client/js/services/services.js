@@ -1,24 +1,3 @@
-/**
- * @name extend
- * @desc Given two objects, return an object that has all of the key/value pairs of obj1 along
- *   with the key/value pairs of obj2.
- * @param {Object} ob1 - Any type of object.
- * @param {Object} ob2 - Any type of object.
- * @returns {Object} Retuns an object that is a combination of the two objects.
- */
-var extend = function(ob1, ob2) {
-  var result = ob1;
-
-  for (var key in ob2) {
-    if (!(key in ob1)) {
-      ob1[key] = ob2[key];
-    }
-  }
-
-  return result;
-};
-
-
 angular.module('fridgely.services', [])
   .factory('Search', function($http, $location) {
     var recipes = [];
