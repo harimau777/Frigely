@@ -19,7 +19,6 @@ var getPromise = function(method, uri) {
     },
     url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${uri}`
   };
-  console.log(`Making a rest call to: ${options.url}`); // DEBUG
 
   return rp(options);  
 };
@@ -58,7 +57,6 @@ module.exports = {
   getRecipesForIngredients: (req, res) => {
     if (req.query.ingredients) {
       var ingredientsStr = req.query.ingredients.join('%2c+');
-      console.log(ingredientsStr); // DEBUG
 
       getPromise('GET', 'findByIngredients?fillIngredients=false&ingredients=' +
                  `${ingredientsStr}&limitLicense=false&number=5&ranking=1`)
