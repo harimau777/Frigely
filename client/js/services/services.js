@@ -10,7 +10,6 @@ angular.module('fridgely.services', [])
      * @returns {Promise.???} Return a promise containing a list of ingredientes.
      */
     var sendIngredients = function(ingredients) {
-      console.log(`The ingredients we're sending are ${ingredients}`);          // DEBUG
       return $http({
         method: 'GET',
         url: '/api/recipes',
