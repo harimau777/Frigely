@@ -2,11 +2,14 @@ var unirest = require('unirest');
 var config = require('../env/config.js');
 var request = require('request');
 var rp = require('request-promise');
+var _ = require('underbar');
 
 
 /**
  * @name getPromise
- * @desc Given two strings, method representing an HTTP method, and uri representing the end of a spoonacular uri endpoint, return a promise that resolves to an object that is the response of an REST call to the spoonacular endpoint. 
+ * @desc Given two strings, method representing an HTTP method, and uri representing the end of
+ *    a spoonacular uri endpoint, return a promise that resolves to an object that is the
+ *    response of an REST call to the spoonacular endpoint. 
  * @param {string} method - The HTTP method (GET, POST, etc.) that we would like to execute. 
  * @param {string} uri - The end of a URI that we would like to make a call against. 
  * @returns {Promise<Object>} Return a promise that resolves to a request response. 
