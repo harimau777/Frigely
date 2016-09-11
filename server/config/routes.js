@@ -14,15 +14,13 @@ module.exports = function(app) {
   app.use('/api/recipes', helpers.decode);
   app.get('/api/recipes', ingredientsController.getRecipesForIngredients);
 
-  app.get('/api/recipe/:recipeId', ingredientsController.getRecipeId);
-
- 	app.post('/api/recipe/steps', ingredientsController.getRecipeSteps);
-
- 	app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
-
-
+  // I'm not sure that we need these endpoints anymore.
+  // app.get('/api/recipe/:recipeId', ingredientsController.getRecipeId);
+  // app.post('/api/recipe/steps', ingredientsController.getRecipeSteps);
+  // app.post('/api/recipe/summary', ingredientsController.getRecipeSummary);
+  
   app.post('/api/users/login', passport.authenticate('local-login', {
-    failureRedirect: '/#/login',
+    failureRedirect: '/#/login'
   }), function(req, res) {
     helpers.tokenize(req, res);
   });
