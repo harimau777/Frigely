@@ -15,6 +15,8 @@ angular.module('fridgely.services', [])
         url: '/api/recipes',
         params: ingredients
       }).then(function(res) {
+        recipes = res.data;
+        $location.path('/recipes');
         console.log('The result back from the server is;', res);
       });
     };
