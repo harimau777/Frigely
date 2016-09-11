@@ -32,9 +32,9 @@ angular.module('fridgely.services', [])
      */
     var sendIngredients = function(ingredients) {
       return $http({
-        method: 'POST',
+        method: 'GET',
         url: '/api/recipes',
-        data: ingredients
+        params: ingredients
       }).then(function(res) {
 
         // For each recipe, get more info about the recipe.

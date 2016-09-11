@@ -12,7 +12,7 @@ module.exports = function(app) {
     * @returns {nothing}
     */
   app.use('/api/recipes', helpers.decode);
-  app.post('/api/recipes', ingredientsController.getRecipesForIngredients);
+  app.get('/api/recipes', ingredientsController.getRecipesForIngredients);
 
   app.get('/api/recipe/:recipeId', ingredientsController.getRecipeId);
 
