@@ -23,6 +23,15 @@ module.exports = function(grunt) {
           'client/js/**/*.js'
         ]
       ]
+    },
+
+    shell: {
+      npmInstall: {
+        command: 'npm install'
+      },
+      bowerInstall: {
+        command: 'bower install'
+      }
     }
   });
 
@@ -33,9 +42,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-eslint');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('start', [
     'nodemon'
+  ]);
+
+  grunt.registerTask('install', [
+    'shell'
   ]);
 
   grunt.registerTask('test', [
