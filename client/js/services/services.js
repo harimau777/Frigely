@@ -1,24 +1,3 @@
-/**
- * @name extend
- * @desc Given two objects, return an object that has all of the key/value pairs of obj1 along
- *   with the key/value pairs of obj2.
- * @param {Object} ob1 - Any type of object.
- * @param {Object} ob2 - Any type of object.
- * @returns {Object} Retuns an object that is a combination of the two objects.
- */
-var extend = function(ob1, ob2) {
-  var result = ob1;
-
-  for (var key in ob2) {
-    if (!(key in ob1)) {
-      ob1[key] = ob2[key];
-    }
-  }
-
-  return result;
-};
-
-
 angular.module('fridgely.services', [])
   .factory('Search', function($http, $location) {
     var recipes = [];
@@ -32,34 +11,13 @@ angular.module('fridgely.services', [])
      */
     var sendIngredients = function(ingredients) {
       return $http({
-        method: 'POST',
+        method: 'GET',
         url: '/api/recipes',
-        data: ingredients
+        params: ingredients
       }).then(function(res) {
-
-        // For each recipe, get more info about the recipe.
-        res.data.forEach(function(recipe) {
-          $http({
-            method: 'GET',
-            url: `/api/recipe/${recipe.id}`
-
-            // Then push the resulting information to all recipes.
-          }).then(function(recipeInfo) {
-            $http({
-              method: 'POST',
-              url: '/api/recipe/summary',
-              data: {
-                recipeId: recipeInfo.data.id
-              }
-            }).then(function(recipeSummary) {
-              recipes.push(extend(recipeInfo.data, recipeSummary.data));
-            });
-          }).then(function() {
-
-            // then redirect the user to the recipe list.
-            $location.path('/recipes');
-          });
-        });
+        recipes = res.data;
+        $location.path('/recipes');
+        console.log('The result back from the server is;', res);
       });
     };
 
