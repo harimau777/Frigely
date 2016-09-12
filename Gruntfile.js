@@ -1,3 +1,5 @@
+var KarmaServer = require('karma').Server;
+
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -44,6 +46,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-shell');
 
+  grunt.registerTask('karma', function(done) {
+    new KarmaServer({
+      configFile: __dirname + '/karma.conf.js'
+    }, done).start();
+  });
+
   grunt.registerTask('start', [
     'nodemon'
   ]);
@@ -54,6 +62,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('test', [
-    'mochaTest'
+    'mochaTest',
   ]);
 };
