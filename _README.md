@@ -1,6 +1,6 @@
-# Project Name
+# Fridgely
 
-> Pithy project description
+> Fridgely helps turn ordinary food into 'good food' by providing you instructions to turn your ingredients into spectacular recipes.
 
 ## Team
 
@@ -20,15 +20,12 @@
 
 ## Usage
 
-> Some usage instructions
+> Navigate to the home page and sign up for an account or log in.  Click on the "Enter Ingredients" link to begin a recipe search.  Add your ingredients and click the "GET RECIPES" button.  Browse through each summary of the search results and click "GET INSTRUCTIONS" to obtain additional information about a recipe.
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node 6.2.2
+- MongoDB 3.2.9
 
 ## Development
 
@@ -42,9 +39,23 @@ npm install
 bower install
 ```
 
+### Tasks
+- [x] Deploy site 
+- [x] Documentation
+- [x] Authentication for signup and login
+- [x] Backend API refactor
+- [x] Make site responsive
+- [x] Resize banner images
+- [x] Feature/ingredients page layout
+- [x] Design mocha tests 
+- [x] Endpoints for recipe information
+- [x] Add search spec tests
+
+
+
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/SweatyFigs/SweatyFigs/issues)
 
 
 ## Contributing
