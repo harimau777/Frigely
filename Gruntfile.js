@@ -49,7 +49,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('install', [
-    'shell'
+    'shell:npmInstall',
+    'shell:bowerInstall'
   ]);
 
   grunt.registerTask('test', [
