@@ -17,7 +17,7 @@ module.exports = function (config) {
       // 'client/lib/angular-mocks/angular-mocks.js',
 
       // our app code
-      'client/app/**/*.js',
+      'client/js/**/*.js',
 
       // our spec files - in order of the README
       'specs/client/authControllerSpec.js',
