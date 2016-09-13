@@ -6,6 +6,7 @@ angular.module('fridgely', [
   'fridgely.recipes',
   'fridgely.landing',
   'fridegly.search',
+  'fridgely.favorites',
   'ngRoute']
   )
 
