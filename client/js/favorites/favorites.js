@@ -1,15 +1,19 @@
 angular.module('fridgely.favorites', [])
-	.controller('FavoritesController', function($scope, Favorites) {
+	.controller('FavoritesController', function($scope, Favorites, Shared) {
 		$scope.data = {};
+		$scope.shared = Shared;
 
 		var getFavorites = () => {
-			Favorites.getFavorites().then((favorites) => {
-				$scope.data.favorites = favorites.data;
+			Favorites.getFavorites().then((res) => {
+				$scope.data.favorites = res.data.local.favorites;
 			});
 		};
 
 		$scope.addFavorite = () => {
-			if ($scope.data.favorite) {
+			// used to demo shared object between components.
+			$scope.shared.input = $scope.data.favorite;
+			
+			if ($scope.data.favorite && $scope.data.favorites.indexOf($scope.data.favorite) === -1) {
 				Favorites.addFavorite($scope.data.favorite).then(() => {
 					getFavorites();
 				});
@@ -24,3 +28,7 @@ angular.module('fridgely.favorites', [])
 
 		getFavorites();
 	})
+	.component('favoritesComponent', {
+		templateUrl: 'js/favorites/favorites.html',
+		controller: 'FavoritesController',
+	});

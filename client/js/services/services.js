@@ -158,6 +158,9 @@ angular.module('fridgely.services', [])
         signout: signout
       };
 
+  })
+  .factory('Shared',function(){
+    return { Test: 'Hello World' };
   });
 // factory fab
 //three function 
