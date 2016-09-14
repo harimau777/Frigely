@@ -5,7 +5,7 @@ angular.module('fridegly.search', [])
     $scope.shared = Shared;
     $scope.data.ingredients = [];
 
-    $scope.initIngredients = function() {
+    $scope.shared.initIngredients = function() {
       if ($scope.shared.favorites) {
         $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
       }
@@ -25,7 +25,7 @@ angular.module('fridegly.search', [])
       $scope.data.ingredients.indexOf(name) === -1 && $scope.data.ingredients.push(name);
       // $scope.ingredient = '';
       $scope.message = '';
-      $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
+      $scope.shared.selected = $scope.shared.favorites.concat($scope.data.ingredients);
     };
 
     /**
