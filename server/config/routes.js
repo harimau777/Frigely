@@ -1,6 +1,8 @@
 var ingredientsController = require('../ingredients/ingredientsController.js');
 var helpers = require('./helpers.js');
 var passport = require('passport');
+var db = require('./utils.js');
+
 // maybe recipes controller too
 
 module.exports = function(app) {
@@ -13,6 +15,23 @@ module.exports = function(app) {
     */
   app.use('/api/recipes', helpers.decode);
   app.get('/api/recipes', ingredientsController.getRecipesForIngredients);
+
+  app.route('/user/favorites')
+    .get(function(req, res){
+      db.getFavorites(req, res);
+    })
+    .post(function(req, res){
+      db.addFavorite(req, res);
+    })
+    .delete(function(req, res){
+      db.deleteFavorite(req, res);
+    }); 
+
+  // app.get('/user/favorites', passport.authenticate('local-login', {
+  //   failureRedirect: '/#/login'
+  // }), function(req, res) {
+  //   res.send("200");
+  // });
 
   // I'm not sure that we need these endpoints anymore.
   // app.get('/api/recipe/:recipeId', ingredientsController.getRecipeId);
@@ -30,6 +49,7 @@ module.exports = function(app) {
     function(req, res) {
       helpers.tokenize(req, res);
     });
+  
   // app.get('/api/users/signedin', userController.checkAuth);
 };
 
