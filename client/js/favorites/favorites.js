@@ -2,12 +2,13 @@ angular.module('fridgely.favorites', [])
 	.controller('FavoritesController', function($scope, Favorites, Shared) {
 		$scope.data = {};
 		$scope.shared = Shared;
+		$scope.shared.favorites = [];
 		// $scope.shared.favorites = $scope.data.favorites;
 
 		var getFavorites = () => {
 			Favorites.getFavorites().then((res) => {
 				$scope.data.favorites = res.data.local.favorites;
-				$scope.shared.favorites = $scope.data.favorites;
+				//$scope.shared.favorites = $scope.data.favorites;
 			});
 		};
 
@@ -26,6 +27,15 @@ angular.module('fridgely.favorites', [])
 			Favorites.removeFavorite(favorite).then(() => {
 				getFavorites();
 			});
+		};
+
+		$scope.selectFavorite = (favorite) => {
+			console.log('Clicked');
+			if ($scope.shared.favorites.indexOf(favorite) === -1) {
+				$scope.shared.favorites.push(favorite);
+			}
+			$scope.shared.initIngredients();
+			console.log($scope.shared.favorites);
 		};
 
 		getFavorites();
