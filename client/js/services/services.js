@@ -36,6 +36,68 @@ angular.module('fridgely.services', [])
       recipes: recipes
     };
   })
+  .factory('Favorites', function($window, $http, $location) {
+    
+    /**
+      * @name addFavorites
+      * @desc Given a list of favorite ingredients and send it to server
+      * @return 
+      */
+    
+    var addFavorite = function(favorite) {
+      return $http({
+        method: 'POST',
+        url: '/user/favorites',
+        data: {
+          favorite: favorite
+        }
+      }).then(function() {
+        console.log('you added favorite item');
+      })
+    };
+    
+    /**
+      * @name getFavorites
+      * @desc get all favorites ingredients from the server 
+      * @return  
+      */
+    
+    var getFavorites = function() {
+      return $http({
+        method: 'GET',
+        url: '/user/favorites'
+      }).then(function(resp) {
+        console.log('you requested to get all favorite ingredients: ', resp);
+        return resp;
+      })
+
+    };
+
+
+    /**
+      * @name removeFavorites
+      * @desc Iss
+      */ 
+    
+    var removeFavorite = function(favorite) {
+      return $http({
+        method: 'DELETE',
+        url: '/user/favorites:id',
+        data: {
+          favorite: favorite
+        }
+      }).then(function(resp) {
+        console.log(resp);
+        console.log('you deleted all your favorites ingredients...');
+      })
+    };
+
+    return {
+      addFavorite: addFavorite,
+      getFavorites: getFavorites,
+      removeFavorite: removeFavorite
+    }       
+  })
   .factory('Auth', function($http, $location, $window)  {
     /**
      * @name login
@@ -75,6 +137,7 @@ angular.module('fridgely.services', [])
      * @returns Boolean
      */
       var isAuth = function() {
+        console.log($window.localStorage.getItem('com.fridgely'));
         return !!$window.localStorage.getItem('com.fridgely');
       };
 
@@ -96,4 +159,8 @@ angular.module('fridgely.services', [])
       };
 
   });
-
+// factory fab
+//three function 
+//add fav
+//remove fav
+//get fav

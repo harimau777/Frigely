@@ -6,6 +6,7 @@ angular.module('fridgely', [
   'fridgely.recipes',
   'fridgely.landing',
   'fridegly.search',
+  'fridgely.favorites',
   'ngRoute']
   )
 
@@ -38,6 +39,10 @@ angular.module('fridgely', [
         templateUrl: 'js/auth/signout.html',
         controller: 'AuthController',
         authenticate: true
+      })
+      .when('/favorites', {
+        templateUrl: 'js/favorites/favorites.html',
+        controller: 'FavoritesController'
       })
       .otherwise({
         redirectTo: '/landing'
