@@ -3,13 +3,13 @@ angular.module('fridgely.favorites', [])
 		$scope.data = {};
 
 		var getFavorites = () => {
-			Favorites.getFavorites().then((favorites) => {
-				$scope.data.favorites = favorites.data;
+			Favorites.getFavorites().then((res) => {
+				$scope.data.favorites = res.data.local.favorites;
 			});
 		};
 
 		$scope.addFavorite = () => {
-			if ($scope.data.favorite) {
+			if ($scope.data.favorite && $scope.data.favorites.indexOf($scope.data.favorite) === -1) {
 				Favorites.addFavorite($scope.data.favorite).then(() => {
 					getFavorites();
 				});

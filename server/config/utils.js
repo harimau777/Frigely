@@ -14,18 +14,8 @@ exports.addFavorite = function(req, res){
 	var user = jwt.decode(req.headers['x-access-token'], 'secret');
 	console.log(user);
 	User.findOne({ 'local.username': user }, (err, entry) => {
-		console.log('ENTRY:',entry);
-		console.log('FAVORITES:',entry.local.favorites);
 		entry.local.favorites = entry.local.favorites.concat(req.body.favorite);
-		entry.save((err) => {
-			if (err) {
-				console.log(err);
-			} else {
-				console.log('made it');
-				console.log(entry.local.favorites) ;
-				res.send(200);
-			}
-		});
+		entry.save(err => res.send(200));
 	});
 };
 
