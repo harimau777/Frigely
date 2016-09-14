@@ -49,8 +49,7 @@ angular.module('fridgely.services', [])
         method: 'POST',
         url: '/user/favorites',
         data: {
-          favorite: favorite,
-          token: $window.localStorage.getItem('com.fridgely')
+          favorite: favorite
         }
       }).then(function() {
         console.log('you added favorite item');
@@ -66,10 +65,7 @@ angular.module('fridgely.services', [])
     var getFavorites = function() {
       return $http({
         method: 'GET',
-        url: '/user/favorites',
-        params: {
-          token: $window.localStorage.getItem('com.fridgely')
-        }
+        url: '/user/favorites'
       }).then(function(resp) {
         console.log('you requested to get all favorite ingredients: ', resp);
         return resp;
@@ -88,8 +84,7 @@ angular.module('fridgely.services', [])
         method: 'DELETE',
         url: '/user/favorites:id',
         data: {
-          favorite: favorite,
-          token: $window.localStorage.getItem('com.fridgely')
+          favorite: favorite
         }
       }).then(function(resp) {
         console.log(resp);
