@@ -4,6 +4,7 @@ angular.module('fridegly.search', [])
     $scope.data = {};
     $scope.shared = Shared;
     $scope.data.ingredients = [];
+    $scope.shared.selected = [];
 
     $scope.shared.initIngredients = function() {
       if ($scope.shared.favorites) {
@@ -47,11 +48,13 @@ angular.module('fridegly.search', [])
      * @returns undefined
      */
     $scope.sendIngredients = function () {
-      if ($scope.data.ingredients.length === 0) {
+      if ($scope.shared.selected.length === 0) {
         $scope.message = 'Please add one or more ingredients.';
       } else {
-        console.log($scope.data);
-        Search.sendIngredients($scope.data);
+        var ingredients = {
+          ingredients: $scope.shared.selected
+        };
+        Search.sendIngredients(ingredients);
       }
     };
   })
