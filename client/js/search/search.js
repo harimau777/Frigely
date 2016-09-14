@@ -5,9 +5,10 @@ angular.module('fridegly.search', [])
     $scope.shared = Shared;
     $scope.data.ingredients = [];
 
-    $scope.initIngredients = function() {
+    $scope.shared.initIngredients = function() {
       if ($scope.shared.favorites) {
-        $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
+        $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
+        //$scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
       }
     };
 
@@ -23,9 +24,10 @@ angular.module('fridegly.search', [])
         return item[0].toUpperCase() + item.substr(1).toLowerCase();
       }).join(' ');
       $scope.data.ingredients.indexOf(name) === -1 && $scope.data.ingredients.push(name);
-      // $scope.ingredient = '';
       $scope.message = '';
-      $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
+      $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
+      $scope.ingredient = '';
+      //$scope.shared.selected = $scope.shared.favorites.concat($scope.data.ingredients);
     };
 
     /**
