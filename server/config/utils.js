@@ -2,7 +2,7 @@ var User = require('../users/user.js');
 var jwt = require('jwt-simple');
 
 exports.getFavorites = function(req, res){
-	var user = jwt.decode(req.body.token, 'secret');
+	var user = jwt.decode(req.headers['x-access-token'], 'secret');
 	User.findOne({ user: user }, (err, entry) => {
 		err ? res.send(400) : res.send(entry);
 	});
