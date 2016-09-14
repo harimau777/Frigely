@@ -22,5 +22,5 @@ angular.module('fridgely.favorites', [])
 			});
 		};
 
-		//getFavorites();
+		getFavorites();
 	})
