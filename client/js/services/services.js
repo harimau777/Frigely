@@ -160,7 +160,10 @@ angular.module('fridgely.services', [])
 
   })
   .factory('Shared',function(){
-    return { Test: 'Hello World' };
+    // Factory service provides shared state between components.
+    return {
+      test: 'Hello World'
+    };
   });
 // factory fab
 //three function 
