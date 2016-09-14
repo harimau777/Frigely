@@ -1,0 +1,10 @@
+<div class="favorites" ng-controller="FavoritesController">
+	<h1>Favorites</h1>
+	<form ng-submit="addFavorite()">
+		<input ng-model="data.favorite" placeholder="Add ingredient">
+	</form>
+  <div ng-repeat="favorite in data.favorites">
+    <p class="favorite" ng-click="selectFavorite(favorite)">{{favorite}}</p>
+    <span class="removeFavoriteButton" ng-click="removeFavorite(favorite)"></span>
+  </div>
+</div>
