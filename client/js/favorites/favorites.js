@@ -15,11 +15,17 @@ angular.module('fridgely.favorites', [])
 		$scope.addFavorite = () => {
 			// used to demo shared object between components.
 			$scope.shared.input = $scope.data.favorite;
-			
+
 			if ($scope.data.favorite && $scope.data.favorites.indexOf($scope.data.favorite) === -1) {
-				Favorites.addFavorite($scope.data.favorite).then(() => {
-					getFavorites();
-				});
+				var name = $scope.data.favorite.trim().split(/\s+/).map(function(item) {
+				  return item[0].toUpperCase() + item.substr(1).toLowerCase();
+				}).join(' ');
+				if ($scope.data.favorites.indexOf(name) === -1) {
+					Favorites.addFavorite(name).then(() => {
+						$scope.data.favorite = '';
+						getFavorites();
+					});
+				}
 			}
 		};
 
