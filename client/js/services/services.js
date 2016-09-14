@@ -44,11 +44,14 @@ angular.module('fridgely.services', [])
       * @return 
       */
     
-    var addFavorite = function(ingredient) {
+    var addFavorite = function(favorite) {
       return $http({
         method: 'POST',
         url: '/api/favorites',
-        data: ingredient
+        data: {
+          favorite: favorite,
+          token: $window.localStorage.getItem('com.fridgely')
+        }
       }).then(function() {
         console.log('you added favorite item');
       })
@@ -63,9 +66,13 @@ angular.module('fridgely.services', [])
     var getFavorites = function() {
       return $http({
         method: 'GET',
-        url: '/api/favorites'
+        url: '/api/favorites',
+        data: {
+          token: $window.localStorage.getItem('com.fridgely')
+        }
       }).then(function(resp) {
         console.log('you requested to get all favorite ingredients: ', resp);
+        return resp;
       })
 
     };
@@ -76,12 +83,16 @@ angular.module('fridgely.services', [])
       * @desc Iss
       */ 
     
-    var removeFavorite = function(noMoreFavItem) {
+    var removeFavorite = function(favorite) {
       return $http({
         method: 'DELETE',
         url: '/api/favorites:id',
-        data: noMoreFavItem
-      }).then(function() {
+        data: {
+          favorite: favorite,
+          token: $window.localStorage.getItem('com.fridgely')
+        }
+      }).then(function(resp) {
+        console.log(resp);
         console.log('you deleted all your favorites ingredients...');
       })
     };
@@ -131,6 +142,7 @@ angular.module('fridgely.services', [])
      * @returns Boolean
      */
       var isAuth = function() {
+        console.log($window.localStorage.getItem('com.fridgely'));
         return !!$window.localStorage.getItem('com.fridgely');
       };
 
