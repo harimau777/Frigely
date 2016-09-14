@@ -1,15 +1,14 @@
-
 angular.module('fridegly.search', [])
   .controller('SearchController', function($scope, Search, Shared) {
     $scope.data = {};
     $scope.shared = Shared;
     $scope.data.ingredients = [];
     $scope.shared.selected = [];
+    $scope.shared.ingredients = [];
 
     $scope.shared.initIngredients = function() {
       if ($scope.shared.favorites) {
         $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
-        //$scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
       }
     };
 
@@ -57,6 +56,12 @@ angular.module('fridegly.search', [])
         Search.sendIngredients(ingredients);
       }
     };
+
+    Search.getIngredientList()
+      .then(function(res){
+        $scope.shared.ingredients = res.data;
+        console.log($scope.shared.ingredients);
+      });
   })
   .component('searchComponent', {
     templateUrl: 'js/search/search.html',

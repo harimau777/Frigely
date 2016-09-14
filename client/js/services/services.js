@@ -21,6 +21,15 @@ angular.module('fridgely.services', [])
       });
     };
 
+    var getIngredientList = function(){
+      return $http({
+        method: 'GET',
+        url: '/search/json',
+      }).then(function(res){
+        return res;
+      });
+    }
+
     /**
      * @name getRecipes
      * @desc Gives the stored recipes for whoever is asking for it
@@ -33,7 +42,8 @@ angular.module('fridgely.services', [])
     return {
       sendIngredients: sendIngredients,
       getRecipes: getRecipes,
-      recipes: recipes
+      recipes: recipes,
+      getIngredientList: getIngredientList
     };
   })
   .factory('Favorites', function($window, $http, $location) {
