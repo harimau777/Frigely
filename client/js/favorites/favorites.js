@@ -4,12 +4,12 @@ angular.module('fridgely.favorites', [])
 
 		var getFavorites = () => {
 			Favorites.getFavorites().then((favorites) => {
-				$scope.data.favorites = favorites;
+				$scope.data.favorites = favorites.data;
 			});
 		};
 
 		$scope.addFavorite = () => {
-			if ($scope.favorite) {
+			if ($scope.data.favorite) {
 				Favorites.addFavorite($scope.data.favorite).then(() => {
 					getFavorites();
 				});

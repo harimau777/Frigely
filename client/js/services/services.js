@@ -67,7 +67,7 @@ angular.module('fridgely.services', [])
       return $http({
         method: 'GET',
         url: '/user/favorites',
-        data: {
+        params: {
           token: $window.localStorage.getItem('com.fridgely')
         }
       }).then(function(resp) {
