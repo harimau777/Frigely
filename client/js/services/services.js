@@ -36,7 +36,7 @@ angular.module('fridgely.services', [])
       recipes: recipes
     };
   })
-  .factory('Favorites', function($http, $location) {
+  .factory('Favorites', function($window, $http, $location) {
     
     /**
       * @name addFavorites
@@ -47,7 +47,7 @@ angular.module('fridgely.services', [])
     var addFavorite = function(favorite) {
       return $http({
         method: 'POST',
-        url: '/api/favorites',
+        url: '/user/favorites',
         data: {
           favorite: favorite,
           token: $window.localStorage.getItem('com.fridgely')
@@ -66,7 +66,7 @@ angular.module('fridgely.services', [])
     var getFavorites = function() {
       return $http({
         method: 'GET',
-        url: '/api/favorites',
+        url: '/user/favorites',
         data: {
           token: $window.localStorage.getItem('com.fridgely')
         }
@@ -86,7 +86,7 @@ angular.module('fridgely.services', [])
     var removeFavorite = function(favorite) {
       return $http({
         method: 'DELETE',
-        url: '/api/favorites:id',
+        url: '/user/favorites:id',
         data: {
           favorite: favorite,
           token: $window.localStorage.getItem('com.fridgely')
