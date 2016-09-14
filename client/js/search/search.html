@@ -1,5 +1,5 @@
 <div class="search-container" id="search-container"> <!-- had the class '.container' -->
-  <div class="row search-row container"> <!-- start of row -->
+  <div ng-init="initIngredients()" class="row search-row container"> <!-- start of row -->
     <div class="input-field col s6 pull-s1 left-side-search">
       <form ng-submit="addIngredient()">
 	     <input ng-model="ingredient" type="text" id="autocomplete-input" class="autocomplete text-white" pattern="^\s*([A-Za-z]+\s*)+"/>
@@ -19,25 +19,6 @@
           <i class="material-icons right">send</i>
           </button>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="lorem thin">
-        <p class="h4-size">Build <b>good</b> food</p>
-        <span class="search-page">
-          Michigan State University Extension defines 'good food' as food that is 'healthy, green, fair and affordable'. 
-          <br><br>
-          We at fridgely disagree. 'Good food' doesn't have to be green, healthy, nor affordable (it's nice if it is though).
-          <br>We see good food to be food that has to TASTE good! 
-          <br><br>
-          fridgely helps turn ordinary food into 'good food'. Have you ever had a meal that consisted of a raw chicken, a sour lemon, and bowl of italian seasoning and pepper? I haven't, and surely would never want to. Actually, you probabl might die from eating such a meal as your stomach surely can't process raw chicken... Nonetheless, getting back to the point, fridgely helps provide you instructions to turn your bland and very individual ingredients into something spectacular! 
-          <br><br>
-          Start now, and punch in those ingredients!
-          </span>
-        <!-- link: http://msue.anr.msu.edu/news/defining_good_food-->
-        </div>
     </div>
 
 
@@ -46,7 +27,7 @@
         <h4 class="search-h4-text valign center-align">SELECTED INGREDIENTS:</h4>
       </div>
       <div class="container row col s12 m5 ingredients-search" id="ingredients-search">
-        <div ng-repeat="ingredient in data.ingredients">
+        <div ng-repeat="ingredient in shared.selected">
           
           <div class="ingredient card-panel small blue-grey darken-1"> 
               <!-- <div class="card small"> -->

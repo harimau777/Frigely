@@ -1,8 +1,15 @@
 
 angular.module('fridegly.search', [])
-  .controller('SearchController', function($scope, Search) {
+  .controller('SearchController', function($scope, Search, Shared) {
     $scope.data = {};
+    $scope.shared = Shared;
     $scope.data.ingredients = [];
+
+    $scope.initIngredients = function() {
+      if ($scope.shared.favorites) {
+        $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
+      }
+    };
 
     /**
      * @name addIngredients
@@ -16,8 +23,9 @@ angular.module('fridegly.search', [])
         return item[0].toUpperCase() + item.substr(1).toLowerCase();
       }).join(' ');
       $scope.data.ingredients.indexOf(name) === -1 && $scope.data.ingredients.push(name);
-      $scope.ingredient = '';
+      // $scope.ingredient = '';
       $scope.message = '';
+      $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
     };
 
     /**
@@ -40,10 +48,17 @@ angular.module('fridegly.search', [])
       if ($scope.data.ingredients.length === 0) {
         $scope.message = 'Please add one or more ingredients.';
       } else {
+        console.log($scope.data);
         Search.sendIngredients($scope.data);
       }
     };
+  })
+  .component('searchComponent', {
+    templateUrl: 'js/search/search.html',
+    controller: 'SearchController',
+    bindings: {
 
+    }
   });
 
 

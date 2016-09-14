@@ -5,7 +5,7 @@ angular.module('fridgely.landing', [])
     $scope.LPtext = {};
     // $scope.LPheader = 'ACT FRIDGE-FRIENDLY. BE FOOD-SAVY. COMBAT SELF-HUNGER.';
     $scope.LPtext.title = 'Join the Fight Against Self-Hunger';
-    $scope.LPtext.descriptions = ['Be food-savy.', 'Act fridge-friendly.', 'Use fridgely.'];
+    $scope.LPtext.descriptions = ['Be Like Mike.', 'Act fridge-friendly.', 'Use fridgely.'];
   })
   .component('landingComponent', {
 		templateUrl: 'js/landing/landing.html',

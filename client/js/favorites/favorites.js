@@ -2,10 +2,12 @@ angular.module('fridgely.favorites', [])
 	.controller('FavoritesController', function($scope, Favorites, Shared) {
 		$scope.data = {};
 		$scope.shared = Shared;
+		// $scope.shared.favorites = $scope.data.favorites;
 
 		var getFavorites = () => {
 			Favorites.getFavorites().then((res) => {
 				$scope.data.favorites = res.data.local.favorites;
+				$scope.shared.favorites = $scope.data.favorites;
 			});
 		};
 
