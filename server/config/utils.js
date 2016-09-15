@@ -21,6 +21,7 @@ exports.addFavorite = function(req, res){
 
 exports.deleteFavorite = function(req, res){
 	var user = jwt.decode(req.headers['x-access-token'], 'secret');
+	console.log('req', req)
 	User.findOne({ user: user })
 	.find({ favorites: req.query.favorites })
 		.remove().exec();

@@ -82,7 +82,7 @@ angular.module('fridgely.services', [])
     var removeFavorite = function(favorite) {
       return $http({
         method: 'DELETE',
-        url: '/user/favorites:id',
+        url: '/user/favorites',
         data: {
           favorite: favorite
         }
