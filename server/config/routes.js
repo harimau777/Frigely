@@ -1,4 +1,4 @@
-var ingredientsController = require('../ingredients/ingredientsController.js');
+  var ingredientsController = require('../ingredients/ingredientsController.js');
 var helpers = require('./helpers.js');
 var passport = require('passport');
 var db = require('./utils.js');

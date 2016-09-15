@@ -21,7 +21,9 @@
         </div>
     </div>
 
-
+    <div>
+      <div ng-if="ingredient" ng-repeat="i in shared.ingredients | filter: ingredient | limitTo: 10">{{i}}</div>
+    </div>
     <div class="col s6 push-s1">
       <div class = "selected-ingredients-text text-box-search">
         <h4 class="search-h4-text valign center-align">SELECTED INGREDIENTS:</h4>
