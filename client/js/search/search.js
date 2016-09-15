@@ -30,6 +30,12 @@ angular.module('fridegly.search', [])
       //$scope.shared.selected = $scope.shared.favorites.concat($scope.data.ingredients);
     };
 
+    $scope.addFavorite = function() {
+      var name = $scope.ingredient.trim().split(/\s+/).map(function(item) {
+        $scope.shared.favorites.indexOf(name) === -1 && $scope.shared.favorites.push(name);
+      }
+    )};
+
     /**
      * @name deleteIngredient
      * @desc When a user clicks the 'x' on a current ingredient, this will remove the
