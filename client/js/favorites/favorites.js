@@ -30,9 +30,15 @@ angular.module('fridgely.favorites', [])
 		};
 
 		$scope.removeFavorite = (favorite) => {
+			
+			var index = $scope.shared.favorites.indexOf(favorite);
+  			$scope.shared.favorites.splice(index, 1); 
+			
 			Favorites.removeFavorite(favorite).then(() => {
 				getFavorites();
 			});
+			$scope.shared.initIngredients();
+			console.log('inside remove favorites: ',$scope.shared.favorites);
 		};
 
 		$scope.selectFavorite = (favorite) => {
