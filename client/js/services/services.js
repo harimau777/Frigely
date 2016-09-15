@@ -82,7 +82,7 @@ angular.module('fridgely.services', [])
     var removeFavorite = function(favorite) {
       return $http({
         method: 'DELETE',
-        url: '/user/favorites:id',
+        url: '/user/favorites',
         data: {
           favorite: favorite
         }
@@ -158,6 +158,12 @@ angular.module('fridgely.services', [])
         signout: signout
       };
 
+  })
+  .factory('Shared',function(){
+    // Factory service provides shared state between components.
+    return {
+      test: 'Hello World'
+    };
   });
 // factory fab
 //three function 

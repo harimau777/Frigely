@@ -21,6 +21,7 @@
     "angular": "^1.5.8",
     "angular-route": "^1.5.8",
     "angular-material": "^1.1.0",
-    "angular-sanitize": "^1.5.8"
+    "angular-sanitize": "^1.5.8",
+    "underscore": "^1.8.3"
   }
 }
