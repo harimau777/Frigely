@@ -59,8 +59,8 @@ angular.module('fridegly.search', [])
 
     Search.getIngredientList()
       .then(function(res){
+        //$scope.shared.ingredients = res.data.slice(0, 10);
         $scope.shared.ingredients = res.data;
-        console.log($scope.shared.ingredients);
       });
   })
   .component('searchComponent', {
