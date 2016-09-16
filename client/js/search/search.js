@@ -51,6 +51,7 @@ angular.module('fridegly.search', [])
      */
     $scope.deleteIngredient = function () {
       $scope.data.ingredients.splice($scope.data.ingredients.indexOf(this.ingredient), 1);
+      $scope.shared.initIngredients();
     };
 
     /**
