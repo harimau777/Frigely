@@ -1,10 +1,8 @@
 <div class="favorites" ng-controller="FavoritesController">
 	<h1>Favorites</h1>
-	<form ng-submit="addFavorite()">
-		<input ng-model="data.favorite" placeholder="Add ingredient">
-	</form>
   <div ng-repeat="favorite in data.favorites">
-    <p class="favorite" ">{{favorite}}</p>
+    <a ng-click="selectFavorite(favorite)" ng-click="removeFavorite(favorite)" class="favorite" ">{{favorite}}</a>
     <span class="removeFavoriteButton" ng-click="removeFavorite(favorite)"></span>
+    <a class="btn" ng-click="removeFavorite(favorite)">delete</a>
   </div>
 </div>

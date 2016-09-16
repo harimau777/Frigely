@@ -1,13 +1,14 @@
-
 angular.module('fridegly.search', [])
-  .controller('SearchController', function($scope, Search, Shared) {
+  .controller('SearchController', function($scope, Search, Shared, Favorites) {
     $scope.data = {};
     $scope.shared = Shared;
     $scope.data.ingredients = [];
+    $scope.shared.selected = [];
+    $scope.shared.ingredients = [];
 
-    $scope.initIngredients = function() {
+    $scope.shared.initIngredients = function() {
       if ($scope.shared.favorites) {
-        $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
+        $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
       }
     };
 
@@ -23,9 +24,23 @@ angular.module('fridegly.search', [])
         return item[0].toUpperCase() + item.substr(1).toLowerCase();
       }).join(' ');
       $scope.data.ingredients.indexOf(name) === -1 && $scope.data.ingredients.push(name);
-      // $scope.ingredient = '';
       $scope.message = '';
-      $scope.shared.selected = $scope.data.ingredients.concat($scope.shared.favorites);
+      $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
+      $scope.ingredient = '';
+      //$scope.shared.selected = $scope.shared.favorites.concat($scope.data.ingredients);
+    };
+
+    $scope.addFavorite = function() {
+      var name = $scope.ingredient.trim().split(/\s+/).map(function(item) {
+        return item[0].toUpperCase() + item.substr(1).toLowerCase();
+      }).join(' ');
+      if ($scope.shared.favorites.indexOf(name) === -1) {
+        console.log(name);
+        Favorites.addFavorite(name).then((resp) => {
+          $scope.shared.getFavorites();
+        });
+      }
+      $scope.ingredient = '';
     };
 
     /**
@@ -45,13 +60,21 @@ angular.module('fridegly.search', [])
      * @returns undefined
      */
     $scope.sendIngredients = function () {
-      if ($scope.data.ingredients.length === 0) {
+      if ($scope.shared.selected.length === 0) {
         $scope.message = 'Please add one or more ingredients.';
       } else {
-        console.log($scope.data);
-        Search.sendIngredients($scope.data);
+        var ingredients = {
+          ingredients: $scope.shared.selected
+        };
+        Search.sendIngredients(ingredients);
       }
     };
+
+    Search.getIngredientList()
+      .then(function(res){
+        //$scope.shared.ingredients = res.data.slice(0, 10);
+        $scope.shared.ingredients = res.data;
+      });
   })
   .component('searchComponent', {
     templateUrl: 'js/search/search.html',

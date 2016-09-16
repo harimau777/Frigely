@@ -2,7 +2,7 @@ var ingredientsController = require('../ingredients/ingredientsController.js');
 var helpers = require('./helpers.js');
 var passport = require('passport');
 var db = require('./utils.js');
-
+var ingredientList = require('../ingredients/ingredientList.json');
 // maybe recipes controller too
 
 module.exports = function(app) {
@@ -22,16 +22,15 @@ module.exports = function(app) {
     })
     .post(function(req, res){
       db.addFavorite(req, res);
-    })
-    .delete(function(req, res){
+    })  
+    .put(function(req, res){
+      console.log('inside the delete method of server');
       db.deleteFavorite(req, res);
-    }); 
+    });
 
-  // app.get('/user/favorites', passport.authenticate('local-login', {
-  //   failureRedirect: '/#/login'
-  // }), function(req, res) {
-  //   res.send("200");
-  // });
+    app.get('/search/json', function(req, res){
+      res.send(ingredientList);
+    });
 
   // I'm not sure that we need these endpoints anymore.
   // app.get('/api/recipe/:recipeId', ingredientsController.getRecipeId);
