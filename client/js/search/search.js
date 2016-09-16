@@ -4,12 +4,20 @@ angular.module('fridegly.search', [])
     $scope.data.selected = [];
     $scope.data.ingredientList = [];
     $scope.data.favorites = [];
+    $scope.option = 'Select Ingredient';
+    $scope.filterOptions = ['Vegan', 'Vegetarian', 'Paleo'];
+    $scope.filterOption = 'Select Diet';
 
     var getFavorites = () => {
       Favorites.getFavorites().then((res) => {
         $scope.data.favorites = res.data.local.favorites;
       });
     };
+    $scope.format = function(phrase) {
+      return phrase.trim().split(/\s+/).map(function(item) {
+        return item[0].toUpperCase() + item.substr(1).toLowerCase();
+      }).join(' ');
+    }
     /**
      * @name addIngredients
      * @desc Takes the user input ingredient and adds it to the array of current ingredients
@@ -74,10 +82,14 @@ angular.module('fridegly.search', [])
       if ($scope.data.selected.length === 0) {
         $scope.message = 'Please add one or more ingredients.';
       } else {
-        var ingredients = {
-          ingredients: $scope.data.selected
+        if ($scope.filterOptions.indexOf($scope.filterOption) != -1) {
+          var diet = $scope.filterOption;
+        }
+        var data = {
+          ingredients: $scope.data.selected,
+          diet: diet
         };
-        Search.sendIngredients(ingredients);
+        Search.sendIngredients(data);
       }
     };
 
@@ -85,7 +97,6 @@ angular.module('fridegly.search', [])
 
     Search.getIngredientList()
       .then(function(res){
-        //$scope.data.ingredientList = res.data.slice(0, 10);
         $scope.data.ingredientList = res.data;
       });
   })
