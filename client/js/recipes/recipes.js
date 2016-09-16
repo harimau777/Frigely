@@ -7,7 +7,6 @@ angular.module('fridgely.recipes', ['ngSanitize'])
     $scope.data = {};
 
     $scope.data.recipes = [];
-    
 
     /**
      * @name getIngredients
@@ -25,11 +24,6 @@ angular.module('fridgely.recipes', ['ngSanitize'])
     //This toggles the display of the div that provides link to the search page
     $scope.showSearch = $scope.data.recipes.length === 0;
 
-
-
-
-    //******** adding below
-
     $scope.snippet = '';
 
     /**
@@ -43,5 +37,8 @@ angular.module('fridgely.recipes', ['ngSanitize'])
       */
       $scope.snippet = recipe.title;
     };
-
+  })
+  .component('recipesComponent', {
+    templateUrl: 'js/recipes/recipes.html',
+    controller: 'RecipeController',
   });
