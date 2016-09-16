@@ -21,6 +21,7 @@ module.exports = function(app) {
       db.getFavorites(req, res);
     })
     .post(function(req, res){
+      console.log('POSTing')
       db.addFavorite(req, res);
     })  
     .put(function(req, res){

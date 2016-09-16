@@ -1,46 +1,56 @@
 angular.module('fridegly.search', [])
   .controller('SearchController', function($scope, Search, Shared, Favorites) {
     $scope.data = {};
-    $scope.shared = Shared;
-    $scope.data.ingredients = [];
-    $scope.shared.selected = [];
-    $scope.shared.ingredients = [];
+    $scope.data.selected = [];
+    $scope.data.ingredientList = [];
+    $scope.data.favorites = [];
 
-    $scope.shared.initIngredients = function() {
-      if ($scope.shared.favorites) {
-        $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
-      }
+    var getFavorites = () => {
+      Favorites.getFavorites().then((res) => {
+        $scope.data.favorites = res.data.local.favorites;
+      });
     };
-
     /**
      * @name addIngredients
      * @desc Takes the user input ingredient and adds it to the array of current ingredients
      * @returns undefined
      */
-    $scope.addIngredient = function () {
+    $scope.selectIngredient = function (ingredient) {
       // Scrub the input string so that it looks standardized. For exmaple, strings such as
       //   'chICKEN        FinGers' -> 'Chicken Fingers'. 
-      var name = $scope.ingredient.trim().split(/\s+/).map(function(item) {
+      var name = $scope.ingredient || ingredient;
+      name = name.trim().split(/\s+/).map(function(item) {
         return item[0].toUpperCase() + item.substr(1).toLowerCase();
       }).join(' ');
-      $scope.data.ingredients.indexOf(name) === -1 && $scope.data.ingredients.push(name);
+      $scope.data.selected.indexOf(name) === -1 && $scope.data.selected.push(name);
       $scope.message = '';
-      $scope.shared.selected = _.union($scope.data.ingredients, $scope.shared.favorites);
       $scope.ingredient = '';
-      //$scope.shared.selected = $scope.shared.favorites.concat($scope.data.ingredients);
     };
 
-    $scope.addFavorite = function() {
-      var name = $scope.ingredient.trim().split(/\s+/).map(function(item) {
+    $scope.selectFavorite = (favorite) => {
+      if ($scope.data.selected.indexOf(favorite) === -1) {
+        $scope.data.selected.push(favorite);
+      }
+    };
+
+    $scope.addFavorite = function(favorite) {
+      var name = $scope.ingredient || favorite;
+      name = name.trim().split(/\s+/).map(function(item) {
         return item[0].toUpperCase() + item.substr(1).toLowerCase();
       }).join(' ');
-      if ($scope.shared.favorites.indexOf(name) === -1) {
-        console.log(name);
+
+      if ($scope.data.favorites.indexOf(name) === -1) {
         Favorites.addFavorite(name).then((resp) => {
-          $scope.shared.getFavorites();
+          getFavorites();
         });
       }
       $scope.ingredient = '';
+    };
+
+    $scope.removeFavorite = (favorite) => {
+      Favorites.removeFavorite(favorite).then(() => {
+        getFavorites();
+      });
     };
 
     /**
@@ -49,8 +59,9 @@ angular.module('fridegly.search', [])
      *       ingredient fron the list
      * @returns undefined
      */
-    $scope.deleteIngredient = function () {
-      $scope.data.ingredients.splice($scope.data.ingredients.indexOf(this.ingredient), 1);
+    $scope.deleteIngredient = function(ingredient) {
+      var ingredient = ingredient || this.ingredient;
+      $scope.data.selected.splice($scope.data.selected.indexOf(ingredient), 1);
     };
 
     /**
@@ -60,20 +71,22 @@ angular.module('fridegly.search', [])
      * @returns undefined
      */
     $scope.sendIngredients = function () {
-      if ($scope.shared.selected.length === 0) {
+      if ($scope.data.selected.length === 0) {
         $scope.message = 'Please add one or more ingredients.';
       } else {
         var ingredients = {
-          ingredients: $scope.shared.selected
+          ingredients: $scope.data.selected
         };
         Search.sendIngredients(ingredients);
       }
     };
 
+    getFavorites();
+
     Search.getIngredientList()
       .then(function(res){
-        //$scope.shared.ingredients = res.data.slice(0, 10);
-        $scope.shared.ingredients = res.data;
+        //$scope.data.ingredientList = res.data.slice(0, 10);
+        $scope.data.ingredientList = res.data;
       });
   })
   .component('searchComponent', {
