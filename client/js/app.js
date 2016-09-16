@@ -42,10 +42,12 @@ angular.module('fridgely', [
       })
       .when('/favorites', {
         templateUrl: 'js/favorites/favorites.html',
-        controller: 'FavoritesController'
+        controller: 'FavoritesController',
+        authenticate: true
       })
       .when('/layout', {
-        templateUrl: 'js/layout/layout.html'
+        templateUrl: 'js/layout/layout.html',
+        authenticate: true
       })
       .otherwise({
         redirectTo: '/landing'
