@@ -60,12 +60,13 @@ angular.module('fridgely.services', [])
       });
     };
 
-    var removeRecipe = function(recipe) {
+    var removeRecipe = function(recipe, index) {
       return $http({
         method: 'PUT',
         url: '/user/recipes',
         data: {
-          recipe: recipe
+          recipe: recipe,
+          index: index
         }
       }).then(function(resp) {
         return resp;

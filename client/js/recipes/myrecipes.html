@@ -5,7 +5,7 @@
   </div>
 
   <div class="col s12 m6 l4">
-    <div class="card horizontal small" ng-repeat="recipe in data.myRecipes">
+    <div class="card horizontal small" ng-repeat="recipe in data.myRecipes track by $index">
       <div class="card-image">
         <img src="{{recipe.image}}">
       </div>
@@ -18,7 +18,7 @@
         <div class="card-action">
           <a href="{{recipe.spoonacularSourceUrl}}">Get instructions</a>
           <a ng-click="addRecipe(recipe)">Add To Favorites</a>
-          <a ng-click="removeRecipe(recipe)">Remove From Favorites</a>
+          <a ng-click="removeRecipe(recipe, $index)">Remove From Favorites</a>
         </div>
       </div>
     </div>

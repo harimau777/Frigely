@@ -8,6 +8,7 @@ var userSchema = mongoose.Schema({
     password : String,
     favorites: [String],
     recipes: [String] 
+    // recipes: { type: String }
   },
 
 });

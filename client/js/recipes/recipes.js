@@ -45,7 +45,7 @@ angular.module('fridgely.recipes', ['ngSanitize'])
       Search.getUserRecipes().then(function(res) {
         var myRecipes = [];
         var recipes = res.data.local.recipes;
-        recipes.forEach(function(recipe) {
+        _.each(recipes, function(recipe) {
           myRecipes.push(JSON.parse(recipe));
         });
         $scope.data.myRecipes = myRecipes;
@@ -59,9 +59,8 @@ angular.module('fridgely.recipes', ['ngSanitize'])
       });
     };
 
-    $scope.removeRecipe = function(recipe) {
-      recipe = JSON.stringify(recipe);
-      Search.removeRecipe(recipe).then(function(resp) {
+    $scope.removeRecipe = function(recipe, index) {
+      Search.removeRecipe(recipe, index).then(function(resp) {
         $scope.getUserRecipes();
       })
     };
