@@ -6,6 +6,8 @@
     <div ng-repeat="step in stepsModel">
         <img class="thumb" id="imgOrId" ng-src="{{step}}" />
     </div>
+    
+    <input type='file' ng-model-instant onchange="angular.element(this).scope().imageUpload(this)" />
 
 <!--     <div ng-repeat="favorite in data.favorites">
       <a ng-click="selectFavorite(favorite)" class="favorite" ">{{favorite}}</a>
@@ -51,12 +53,6 @@
           </select>
         </div>
     </div>
-
-    <div ng-controller = "myCtrl">
-      <input type="file" file-model="myFile"/>
-      <button ng-click="uploadFile()">upload me</button>
-    </div>
-
     <div>
       <div ng-if="ingredient" ng-repeat="i in data.ingredientList | filter: ingredient | limitTo: 10">{{i}}</div>
     </div>

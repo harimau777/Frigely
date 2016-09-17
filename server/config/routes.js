@@ -33,7 +33,7 @@ module.exports = function(app) {
 
   app.route('/pictures/upc')
     .post(function(req, res){
-      console.log(req);
+      console.log(req.body);
       res.send(200);
     });
 
