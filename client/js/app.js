@@ -50,7 +50,7 @@ angular.module('fridgely', [
         authenticate: true
       })
       .otherwise({
-        redirectTo: '/landing'
+        redirectTo: '/layout'
       });
 
       //interceptor for every ajax request

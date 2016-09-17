@@ -28,7 +28,7 @@ angular.module('fridgely.services', [])
       }).then(function(res){
         return res;
       });
-    }
+    };
 
     /**
      * @name getRecipes
@@ -39,11 +39,47 @@ angular.module('fridgely.services', [])
       return recipes;
     };
 
+    var getUserRecipes = function() {
+      return $http({
+        method: 'GET',
+        url: '/user/recipes'
+      }).then(function(res) {
+        return res;
+      });
+    };
+
+    var addRecipe = function(recipe) {
+      return $http({
+        method: 'POST',
+        url: '/user/recipes',
+        data: {
+          recipe: recipe
+        }
+      }).then(function(res) {
+        return res;
+      });
+    };
+
+    var removeRecipe = function(recipe) {
+      return $http({
+        method: 'PUT',
+        url: '/user/recipes',
+        data: {
+          recipe: recipe
+        }
+      }).then(function(resp) {
+        return resp;
+      });
+    };
+
     return {
       sendIngredients: sendIngredients,
       getRecipes: getRecipes,
       recipes: recipes,
-      getIngredientList: getIngredientList
+      getIngredientList: getIngredientList,
+      removeRecipe: removeRecipe,
+      addRecipe: addRecipe,
+      getUserRecipes: getUserRecipes
     };
   })
   .factory('Favorites', function($window, $http, $location) {
