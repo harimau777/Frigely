@@ -1,5 +1,5 @@
 <div class="favorites" ng-controller="FavoritesController">
-	<h1>Favorites</h1>
+    <h1>Favorites</h1>
   <div ng-repeat="favorite in data.favorites">
     <a ng-click="selectFavorite(favorite)" ng-click="removeFavorite(favorite)" class="favorite" ">{{favorite}}</a>
     <span class="removeFavoriteButton" ng-click="removeFavorite(favorite)"></span>

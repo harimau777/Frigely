@@ -7,7 +7,8 @@ angular.module('fridgely', [
   'fridgely.landing',
   'fridegly.search',
   'fridgely.favorites',
-  'ngRoute']
+  'ngRoute',
+  'angularFileUpload']
   )
 
   .config(function($routeProvider, $httpProvider) {
@@ -78,7 +79,8 @@ angular.module('fridgely', [
       }
     };
     return attach;
-    })
+  })
+  
   .run(function ($rootScope, $location, Auth) {
     /**
      * @desc Makes sure user is authorized (with token) every route change
