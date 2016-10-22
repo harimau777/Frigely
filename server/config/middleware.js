@@ -19,10 +19,7 @@ module.exports = function(app, express) {
   app.use(morgan('dev')); // log every request to console
   app.use(cookieParser()); //reads cookies for auth
   // app.use(bodyParser); // get information from html forms
-  app.use(bodyParser.json({limit: '5mb'}));
-  app.use(bodyParser.urlencoded({
-    extended: false
-  }));
+  app.use(bodyParser.json());
 
   // serves static files
   app.use(express.static(__dirname + '/../../client'));

@@ -157,7 +157,7 @@ angular.module('fridgely.services', [])
         url: '/api/users/login',
         data: user
       })
-      .then(function(resp) {
+      .then(function (resp) {
         return resp.data.token;
       });
     };
