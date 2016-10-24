@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
-        script: 'server/server.js'
+        script: 'server/cluster.js'
       }
     },
 

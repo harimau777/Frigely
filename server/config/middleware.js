@@ -6,9 +6,10 @@ var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var configDB = require('./database.js');
-
+var compression = require('compression');
 
 module.exports = function(app, express) {
+  app.use(compression());
   app.use(morgan('dev'));
 
   // configuration
@@ -31,3 +32,4 @@ module.exports = function(app, express) {
   app.use(flash()); //flash messages in sessions
 
 };
+
